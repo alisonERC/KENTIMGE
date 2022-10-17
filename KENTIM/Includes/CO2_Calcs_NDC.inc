@@ -135,8 +135,8 @@ eMOD_OUTPUT2(PRC,'ACTGRP',TC,Emiss,GDXFile)$MFSP(FS,PRC) = ProcessEmissions(FS,T
 );
 
 execute_unload "eMOD_OUTPUT.gdx" eMOD_OUTPUT2
-execute 'gdxxrw.exe i=eMOD_OUTPUT.gdx o=.\Emissions_Calibration\GHATIM_OUTPUT.xlsx index=index!a6';
+execute 'gdxxrw.exe i=eMOD_OUTPUT.gdx o=.\Emissions_Calibration\KENTIM_OUTPUT.xlsx index=index!a6';
 
 *execute_unload "HH_En.gdx" HH_Energy2
-*execute 'gdxxrw.exe i=HH_En.gdx o=C:\GHATIMGE_03\Emissions_Calibration\Private_Transport_Results_v00.xlsx index=index!a6';
+*execute 'gdxxrw.exe i=HH_En.gdx o=C:\KENTIMGE_03\Emissions_Calibration\Private_Transport_Results_v00.xlsx index=index!a6';
 

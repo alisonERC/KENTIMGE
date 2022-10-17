@@ -66,11 +66,11 @@ $offtext
          RUNTIMES2.ap = 0;
          PUTCLOSE "";
 
-$include GHATIM\includes\2runTIMES.inc
+$include KENTIM\includes\2runTIMES.inc
 );
 * if(SIM_eMOD(RUN) eq 1,
 
-$include GHATIM\includes\2TIMESReport.inc
+$include KENTIM\includes\2TIMESReport.inc
 
 * adjust capital intensity - still need to add labour intensity
 IFAGR(F,A,TC) = SUM(FS$MFSA(FS,A),IFAFSGR(F,FS,TC));

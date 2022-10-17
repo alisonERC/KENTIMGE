@@ -15,59 +15,59 @@ TGAP(MILESTONYR) = E(MILESTONYR) - B(MILESTONYR)+1;
 SUPELE(PRC)$ELE('REGION1',PRC) = YES;
 
 * interpolate all TIMES results for CGE link and report tables
-*not needed because GHATIM has annual timesteps
+*not needed because KENTIM has annual timesteps
 
 RESID(REG,MILESTONYR,PRC) = PRC_RESID(REG,MILESTONYR,PRC);
 * perform interpolation
 *$BATINCLUDE interpolate PRC_RESID 'REG' 'PRC' ",'0','0','0','0','0'" TC 'RTP(REG,TC,PRC)'
 
-*$BATINCLUDE GHATIM\Includes\interpolate.inc RESID 'REG' 'PRC' ",'0','0','0','0','0'" TC 'RTP(REG,TC,PRC)'
+*$BATINCLUDE KENTIM\Includes\interpolate.inc RESID 'REG' 'PRC' ",'0','0','0','0','0'" TC 'RTP(REG,TC,PRC)'
 
-*$BATINCLUDE GHATIM\Includes\interpolate.inc PAR_CAPL 'REG' 'PRC' ",'0','0','0','0','0'" TC 'PAR_CAPL(REG,TC,PRC)'
+*$BATINCLUDE KENTIM\Includes\interpolate.inc PAR_CAPL 'REG' 'PRC' ",'0','0','0','0','0'" TC 'PAR_CAPL(REG,TC,PRC)'
 
 *$BATINCLUDE interpolate PAR_RCAPL 'REG' 'PRC' ",'0','0','0','0','0'" TC 'PAR_RCAPL(REG,TC,PRC)'
 
-*$BATINCLUDE GHATIM\Includes\interpolate.inc VARACT 'REG' 'PRC' ",'0','0','0','0','0'" TC 'VARACT(REG,TC,PRC)'
+*$BATINCLUDE KENTIM\Includes\interpolate.inc VARACT 'REG' 'PRC' ",'0','0','0','0','0'" TC 'VARACT(REG,TC,PRC)'
 
  NCAP_ILED(REG,TC,PRC) = NCAP_ILED(REG,'2015',PRC);
 
  OBICOST(REG,TC,PRC) = OB_ICOST(REG,PRC,'CUR',TC);
-*$BATINCLUDE GHATIM\Includes\interpolate.inc OBICOST 'REG' 'PRC' ",'0','0','0','0','0'" TC 'RTP(REG,TC,PRC)'
+*$BATINCLUDE KENTIM\Includes\interpolate.inc OBICOST 'REG' 'PRC' ",'0','0','0','0','0'" TC 'RTP(REG,TC,PRC)'
 
  OBACT(REG,TC,PRC) = OB_ACT(REG,PRC,'CUR',TC);
-*$BATINCLUDE GHATIM\Includes\interpolate.inc OBACT 'REG' 'PRC' ",'0','0','0','0','0'" TC 'RTP(REG,TC,PRC)'
+*$BATINCLUDE KENTIM\Includes\interpolate.inc OBACT 'REG' 'PRC' ",'0','0','0','0','0'" TC 'RTP(REG,TC,PRC)'
 
  TVFLOWIN(COM,TC,PRC) = SUM((V,S), F_IN('REGION1',V,TC,PRC,COM,S));
-*$BATINCLUDE GHATIM\Includes\interpolate.inc TVFLOWIN 'COM' 'PRC' ",'0','0','0','0','0'" TC 'TVFLOWIN(COM,TC,PRC)'
+*$BATINCLUDE KENTIM\Includes\interpolate.inc TVFLOWIN 'COM' 'PRC' ",'0','0','0','0','0'" TC 'TVFLOWIN(COM,TC,PRC)'
 
  TVFLOWOUT(COM,TC,PRC) = SUM((V,S), F_OUT('REGION1',V,TC,PRC,COM,S));
-*$BATINCLUDE GHATIM\Includes\interpolate.inc TVFLOWOUT 'COM' 'PRC' ",'0','0','0','0','0'" TC 'TVFLOWOUT(COM,TC,PRC)'
+*$BATINCLUDE KENTIM\Includes\interpolate.inc TVFLOWOUT 'COM' 'PRC' ",'0','0','0','0','0'" TC 'TVFLOWOUT(COM,TC,PRC)'
 
  TCST_INVC(REG,TC,PRC)= sum(V,CST_INVC(REG,V,TC,PRC,'INV'));
-*$BATINCLUDE GHATIM\Includes\interpolate.inc TCST_INVC 'REG' 'PRC' ",'0','0','0','0','0'" TC 'TCST_INVC(REG,TC,PRC)'
+*$BATINCLUDE KENTIM\Includes\interpolate.inc TCST_INVC 'REG' 'PRC' ",'0','0','0','0','0'" TC 'TCST_INVC(REG,TC,PRC)'
 
  TCST_ACTC(REG,TC,PRC)= sum(V,CST_ACTC(REG,V,TC,PRC,'-'));
-*$BATINCLUDE GHATIM\Includes\interpolate.inc TCST_ACTC 'REG' 'PRC' ",'0','0','0','0','0'" TC 'TCST_ACTC(REG,TC,PRC)'
+*$BATINCLUDE KENTIM\Includes\interpolate.inc TCST_ACTC 'REG' 'PRC' ",'0','0','0','0','0'" TC 'TCST_ACTC(REG,TC,PRC)'
 
  TCST_FIXC(REG,TC,PRC)= sum(V,CST_FIXC(REG,V,TC,PRC));
-*$BATINCLUDE GHATIM\Includes\interpolate.inc TCST_FIXC 'REG' 'PRC' ",'0','0','0','0','0'" TC 'TCST_FIXC(REG,TC,PRC)'
+*$BATINCLUDE KENTIM\Includes\interpolate.inc TCST_FIXC 'REG' 'PRC' ",'0','0','0','0','0'" TC 'TCST_FIXC(REG,TC,PRC)'
 
  COM_CSTCO2('REGION1',TC,'CO2EQST')= COM_CSTNET('REGION1',TC,'CO2EQST','ANNUAL','CUR');
-**$BATINCLUDE GHATIM\Includes\interpolate.inc COM_CSTCO2 'REG' 'COM' ",'0','0','0','0','0'" TC 'COM_CSTCO2(REG,TC,COM)'
+**$BATINCLUDE KENTIM\Includes\interpolate.inc COM_CSTCO2 'REG' 'COM' ",'0','0','0','0','0'" TC 'COM_CSTCO2(REG,TC,COM)'
 
 
 
  T_COMBALEM(REG,TC,COM) = PAR_COMBALEM(REG,TC,COM,'ANNUAL');
 *Special calc for hydrogen for power
  T_COMBALEM('REGION1',TC,'PWRHGN')$SUM((V,S),F_OUT('REGION1',V,TC,'XPWRHGN','PWRHGN',S)) = SUM(S,PAR_COMBALEM('REGION1',TC,'PWRHGN',S)*SUM(V,F_OUT('REGION1',V,TC,'XPWRHGN','PWRHGN',S)))/SUM((V,S),F_OUT('REGION1',V,TC,'XPWRHGN','PWRHGN',S));
-*$BATINCLUDE GHATIM\Includes\interpolate.inc T_COMBALEM 'REG' 'COM' ",'0','0','0','0','0'" TC 'T_COMBALEM(REG,TC,COM)'
+*$BATINCLUDE KENTIM\Includes\interpolate.inc T_COMBALEM 'REG' 'COM' ",'0','0','0','0','0'" TC 'T_COMBALEM(REG,TC,COM)'
 
-*$BATINCLUDE GHATIM\Includes\interpolate.inc COM_PROJ 'REG' 'COM' ",'0','0','0','0','0'" TC 'COM_PROJ(REG,TC,COM)'
+*$BATINCLUDE KENTIM\Includes\interpolate.inc COM_PROJ 'REG' 'COM' ",'0','0','0','0','0'" TC 'COM_PROJ(REG,TC,COM)'
 
 
 * Attempt at putting parameter for results equal to variable:
  PAR_VCAPL(REG,TC,PRC) = VAR_CAP.L(REG,TC,PRC);
-*$BATINCLUDE GHATIM\Includes\interpolate.inc PAR_VCAPL 'REG' 'PRC' ",'0','0','0','0','0'" TC 'PAR_VCAPL(REG,TC,PRC)'
+*$BATINCLUDE KENTIM\Includes\interpolate.inc PAR_VCAPL 'REG' 'PRC' ",'0','0','0','0','0'" TC 'PAR_VCAPL(REG,TC,PRC)'
 
 
 
@@ -257,9 +257,9 @@ LOOP((PRC,TC)$(TVNCAP(TC,PRC) AND NCAP_ILED('REGION1','2015',PRC) LT 0),
 * Elc Price
  ETPRICE(TC) = TCST_ELE(RUN,TC)/ELC_FLOW(RUN,TC);
 
- AggFixPrice('ELC',TC,RUN) = Sum(PRCBulkPower,(REPORT(PRCBulkPower,'ACTGRP',TC,RUN,'AnnInvCost')+REPORT(PRCBulkPower,'ACTGRP',TC,RUN,'FOM')))/TVCAP(TC,'GHEL00T00');
+ AggFixPrice('ELC',TC,RUN) = Sum(PRCBulkPower,(REPORT(PRCBulkPower,'ACTGRP',TC,RUN,'AnnInvCost')+REPORT(PRCBulkPower,'ACTGRP',TC,RUN,'FOM')))/TVCAP(TC,'KEEL00T00');
  AggVarCost('ELC',TC,RUN) = Sum(PRCBulkPower, (REPORT(PRCBulkPower,'ACTGRP',TC,RUN,'VOM')+REPORT(PRCBulkPower,'ACTGRP',TC,RUN,'FuelCosts')+REPORT(PRCBulkPower,'ACTGRP',TC,RUN,'CO2Tax')+REPORT(PRCBulkPower,'ACTGRP',TC,RUN,'Levies')));
- AggVarPrice('ELC',TC,RUN)$REPORT('GHEL00T00','GHEL00T',TC,RUN,'FlowOut') = AggVarCost('GHEL00T',TC,RUN)/REPORT('GHEL00T00','ELC',TC,RUN,'FlowOut');
+ AggVarPrice('ELC',TC,RUN)$REPORT('KEEL00T00','KEEL00T',TC,RUN,'FlowOut') = AggVarCost('KEEL00T',TC,RUN)/REPORT('KEEL00T00','ELC',TC,RUN,'FlowOut');
 
 
 

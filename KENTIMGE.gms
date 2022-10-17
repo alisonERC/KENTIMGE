@@ -1,14 +1,14 @@
-*This batch file runs the GHATMGE model. The file can be used to run the GHATIM
-*only, CGE only and linked model. The model run is controlled through the GHATIMGE.xlsm file.
+*This batch file runs the GHATMGE model. The file can be used to run the KENTIM
+*only, CGE only and linked model. The model run is controlled through the KENTIMGE.xlsm file.
 *The file includes the TIMES model, the simulation files of the CGE model and the CGE
 *model results files. To run the batch file for the CGE only or linked model the
 *restart file should be set as follows: r=cge\model.
 
 *1.Set directories*-------------------------------------------------------------
-$SETGLOBAL workingfolder C:\Models\GHATIMGE\
+$SETGLOBAL workingfolder C:\Models\KENTIMGE\
 * TIMES GDX output folder
 $SETGLOBAL TIMESfolder Gams_WrkTI
-$SETGLOBAL gdxfolder %workingfolder%GHATIM\%TIMESfolder%\Gamssave\
+$SETGLOBAL gdxfolder %workingfolder%KENTIM\%TIMESfolder%\Gamssave\
 * Subset of TIMES GDX output folder
 $SETGLOBAL GDXoutfolder %workingfolder%GDXout\
 
@@ -92,8 +92,8 @@ PARAMETERS
 
 
 * Import sets and parameters and data from control spreadsheet-------------------------------
-$call   "gdxxrw i=GHATIMGE.xlsm o=GHATIMGE index=index!a6 checkdate"
-$gdxin  GHATIMGE.gdx
+$call   "gdxxrw i=KENTIMGE.xlsm o=KENTIMGE index=index!a6 checkdate"
+$gdxin  KENTIMGE.gdx
 $load RUN eMODCASES X XC INCLRUN SIM_eMOD SIM_ESAGE SIM_WASTE SIM_AFOLU MRUNCASE MRUNX TC TT TTIMES PAMS SIM_CO2CUMUL
 
 
@@ -395,10 +395,10 @@ LOOP(TS_HOURLY,
 
 * File declarations------------------------------------------------------------
 *INCLUDE NOTES!!!What are these files for?
- FILE SIM_DEM_FILE /".\GHATIM\%TIMESfolder%\DMD_ALL+REGION1.dds"/;
- FILE SIM_OTHPAR_FILE /".\GHATIM\%TIMESfolder%\sim_othpar+REGION1.dds"/;
- FILE RUNTIMES2 /".\GHATIM\%TIMESfolder%\RUNTIMES2.CMD"/;
- FILE ShowRunNumber /".\GHATIM\%TIMESfolder%\ShowRunNumber.CMD"/;
+ FILE SIM_DEM_FILE /".\KENTIM\%TIMESfolder%\DMD_ALL+REGION1.dds"/;
+ FILE SIM_OTHPAR_FILE /".\KENTIM\%TIMESfolder%\sim_othpar+REGION1.dds"/;
+ FILE RUNTIMES2 /".\KENTIM\%TIMESfolder%\RUNTIMES2.CMD"/;
+ FILE ShowRunNumber /".\KENTIM\%TIMESfolder%\ShowRunNumber.CMD"/;
  FILE eMOD_Scen;
  FILE CGE_Scen;
  FILE Scen;
@@ -514,10 +514,10 @@ ELSE
   if(SIM_eMOD(RUN) eq 1,
 * Write Drivers to DMD_PROJ workbook
          execute_unload "drivers.gdx" GVA_FS POP YHE TFHPOP MFHHT QD_FS PAMS_RUN;
-         execute 'gdxxrw.exe i=drivers.gdx o=.\GHATIM\DataSpreadsheets\DMD_PRJ.xlsx index=index_G2E!a6';
+         execute 'gdxxrw.exe i=drivers.gdx o=.\KENTIM\DataSpreadsheets\DMD_PRJ.xlsx index=index_G2E!a6';
 
 * Read resulting Demand from DMD_PROJ workbook
-         execute 'gdxxrw.exe i=.\GHATIM\DataSpreadsheets\DMD_PRJ.xlsx o=EnergyDemand.gdx index=index_E2G!a6';
+         execute 'gdxxrw.exe i=.\KENTIM\DataSpreadsheets\DMD_PRJ.xlsx o=EnergyDemand.gdx index=index_E2G!a6';
          execute_load "EnergyDemand.gdx" SIM_DEMX;
 
 
@@ -556,14 +556,14 @@ ELSE
          PUTCLOSE "";
 
 
-$include GHATIM\includes\2runTIMES.inc
+$include KENTIM\includes\2runTIMES.inc
 
   );
 * if(SIM_eMOD(RUN) eq 1
 
 
 * Get Energy Model Results
-$include GHATIM\includes\2TIMESReport.inc
+$include KENTIM\includes\2TIMESReport.inc
 *REPORT(PRC,'ACTGRP',TC,RUN,'GVA') = SUM(FS$MPRCFS2(PRC,FS),GVA_FS(FS,TC));
 
 
@@ -571,16 +571,16 @@ $include GHATIM\includes\2TIMESReport.inc
 *if(SIM_ESAGE(RUN) eq 1,
 
 * Sub-annual results
-$include GHATIM\includes\2TIMESSubAnnualReport.inc
+$include KENTIM\includes\2TIMESSubAnnualReport.inc
 
 
 *GDP_RUN(TC) = SUM(FSGDP,GVA_FS(FSGDP,TC));
 
 *$ontext
-$include GHATIM\includes\GHGEnergyReport.inc
+$include KENTIM\includes\GHGEnergyReport.inc
 
 *Get Process Emissions
-*$include GHATIM\includes\GHGProcessReport.inc
+*$include KENTIM\includes\GHGProcessReport.inc
 
 if(SIM_WASTE(RUN) eq 1,
 * Run Waste Model
