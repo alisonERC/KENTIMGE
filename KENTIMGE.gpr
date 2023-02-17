@@ -45,9 +45,6 @@ Order=1,2,3,4,5,6
 Decim=7
 PlaneRownr=-1
 
-[RP:2SIMULATION_LOOP]
-1=
-
 [RP:2TIMESREPORT]
 1=
 
@@ -183,22 +180,28 @@ Order=1
 Decim=7
 PlaneRownr=-1
 
-[OPENWINDOW_1]
-FILE0=C:\Models\KENTIMGE\cge\includes\2simulation_loop.inc
-FILE1=C:\Models\KENTIMGE\KENTIM\Gams_WrkTI\gamssave\BASE.gdx
-FILE2=C:\Models\KENTIMGE\KENTIM\includes\2TIMESReport.inc
-FILE3=C:\Models\KENTIMGE\KENTIM\includes\2TIMESSubAnnualReport.inc
-FILE4=C:\Models\KENTIMGE\KENTIMGE.gms
-FILE5=C:\Models\KENTIMGE\KENTIMGE.lst
-FILE6=C:\Models\KENTIMGE\TestKENTIMGE.gdx
-FILE7=C:\Models\KENTIMGE\KENTIMGE.lst
-MAXIM=0
-TOP=4
-LEFT=47
-HEIGHT=1009
-WIDTH=1297
+[GDXDISP: QINT Var 2]
+PlaneDim=0
+RowDim=2
+Squeeze=1
+SqTrail0=0
+Order=1,2,3
+Decim=7
+PlaneRownr=-1
 
-[OPENWINDOW_2]
+[GDXDISP: QINT0 Par 2]
+PlaneDim=0
+RowDim=2
+Squeeze=1
+SqTrail0=0
+Order=1,2
+Decim=7
+PlaneRownr=-1
+
+[RP:2SIMULATION_LOOP]
+1=
+
+[OPENWINDOW_1]
 FILE0=C:\Models\KENTIMGE\TestKENTIMGE.gdx
 FILE1=C:\Models\KENTIMGE\TestKENTIMGE.gdx
 MAXIM=0
@@ -206,3 +209,20 @@ TOP=19
 LEFT=1393
 HEIGHT=803
 WIDTH=1122
+
+[OPENWINDOW_2]
+FILE0=C:\Models\KENTIMGE\CGE\includes\2simulation.inc
+FILE1=C:\Models\KENTIMGE\cge\includes\2simulation_loop.inc
+FILE2=C:\Models\KENTIMGE\CGE\model.gdx
+FILE3=C:\Models\KENTIMGE\KENTIM\Gams_WrkTI\gamssave\BASE.gdx
+FILE4=C:\Models\KENTIMGE\KENTIM\includes\2TIMESReport.inc
+FILE5=C:\Models\KENTIMGE\KENTIM\includes\2TIMESSubAnnualReport.inc
+FILE6=C:\Models\KENTIMGE\KENTIMGE.gms
+FILE7=C:\Models\KENTIMGE\KENTIMGE.lst
+FILE8=C:\Models\KENTIMGE\TestKENTIMGE.gdx
+FILE9=C:\Models\KENTIMGE\CGE\includes\2simulation.inc
+MAXIM=0
+TOP=4
+LEFT=47
+HEIGHT=1009
+WIDTH=1297

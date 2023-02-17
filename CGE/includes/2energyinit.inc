@@ -15,7 +15,7 @@ SETS
 
 * bm sets for adjusting budget share weightings of energy goods
  CHouseholds(C) Commodities consumed by households
- CHEnergy(C) Energy Commodities consumed by households / celec, cpetr /
+ CHEnergy(C) Energy Commodities consumed by households / celec /
 
 * Transport Demands
  TPPR(COM) Private Passenger Demand Commodities /TPPRCAR, TPPRMOT, TPPRSUV/

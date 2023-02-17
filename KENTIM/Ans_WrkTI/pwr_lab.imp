@@ -1,0 +1,311 @@
+SCENARIO	_GLOBAL,REGION1
+Creation Date:	2023/02/17	1:59:53 PM
+Created By:	Export from database C:\Models\KENTIMGE\KENTIM\Kenya _30TS.mdb
+ANSWER Version:	6.9.27
+Scenario:	PWR_LAB	Labour coefficients Power Sector	
+Time Periods:	0	2015	2016	2017	2018	2019	2020	2021	2022	2023	2024	2025	2026	2027	2028	2029	2030	2031	2032	2033	2034	2035	2036	2037	2038	2039	2040	2041	2042	2043	2044	2045	2046	2047	2048	2049	2050
+
+REGIONS	_GLOBAL,REGION1
+_GLOBAL	Special region for data parameters with no REG arg	ALL_REG	
+REGION1	Initial internal region	ALL_REG,REG	
+
+ITEMS	_GLOBAL
+
+TS DATA	_GLOBAL
+
+TID DATA	_GLOBAL
+
+ITEMS	REGION1
+	C	UCACT_FIRM	Constraint on dispatchable techs	uconstraint	UC_N,UCRT,UCRULE	
+	C	UCCAP_BATR	Battery constraint	uconstraint	UC_N,UCRT,UCRULE	
+	C	UCCAP_DUMETR	dummy technology tracking the sum of centralised generation over and above peak grid demand'	uconstraint	UC_N,UCRT	
+	C	UCCAP_ERMELC	Energy Reserve Margin on ELCC	uconstraint	UC_N,UCRT	
+	C	UCCAP_RMELCC	Capacity Reserve Margin on ELCC	uconstraint	UC_N,UCRT	
+	C	UCNCAP_GAS	Max NCAP gas	uconstraint	UC_N,UCRT	
+	C	UCNCAP_PV	Max NCAP PV	uconstraint	UC_N,UCRT	
+	C	UCPWR_FLAB-N	User Constraint Power - Factor-FLAB-N	uconstraint	UC_N,UCRT	
+	C	UCPWR_FLAB-P	User Constraint Power - Factor-FLAB-P	uconstraint	UC_N,UCRT	
+	C	UCPWR_FLAB-S	User Constraint Power - Factor-FLAB-S	uconstraint	UC_N,UCRT	
+	E	FLAB-N	Factor-FLAB-N	PJ	COM,NRG,ANNUAL,FOSSIL	
+	E	FLAB-P	Factor-FLAB-P	PJ	COM,NRG,ANNUAL,FOSSIL	
+	E	FLAB-S	Factor-FLAB-S	PJ	COM,NRG,ANNUAL,FOSSIL	
+	E	PWR_FLAB-N	Power - Factor-FLAB-N	PJ	COM,NRG,ANNUAL,FOSSIL	
+	E	PWR_FLAB-P	Power - Factor-FLAB-P	PJ	COM,NRG,ANNUAL,FOSSIL	
+	E	PWR_FLAB-S	Power - Factor-FLAB-S	PJ	COM,NRG,ANNUAL,FOSSIL	
+	T	EP_FLAB-N	Power - Supply - FLAB-N	PJ,PJa	PRC,PRE,ANNUAL	
+	T	EP_FLAB-P	Power - Supply - FLAB-P	PJ,PJa	PRC,PRE,ANNUAL	
+	T	EP_FLAB-S	Power - Supply - FLAB-S	PJ,PJa	PRC,PRE,ANNUAL	
+	T	MIN_FLAB-N	Supply - Factor-FLAB-N	PJ,PJa	PRC,PRE,ANNUAL,IRE	
+	T	MIN_FLAB-P	Supply - Factor-FLAB-P	PJ,PJa	PRC,PRE,ANNUAL,IRE	
+	T	MIN_FLAB-S	Supply - Factor-FLAB-S	PJ,PJa	PRC,PRE,ANNUAL,IRE	
+
+TS DATA	REGION1
+	ACT_EFF	EP_FLAB-N	-	ACTGRP	-	ANNUAL	-	0	1	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	ACT_EFF	EP_FLAB-P	-	ACTGRP	-	ANNUAL	-	0	1	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	ACT_EFF	EP_FLAB-S	-	ACTGRP	-	ANNUAL	-	0	1	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC__RHSRT	UCPWR_FLAB-N	-	-	-	-	FX	3	0	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC__RHSRT	UCPWR_FLAB-P	-	-	-	-	FX	3	0	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC__RHSRT	UCPWR_FLAB-S	-	-	-	-	FX	3	0	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC_ACT	UCPWR_FLAB-N	LHS	EP_FLAB-N	-	ANNUAL	-	3	1	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC_ACT	UCPWR_FLAB-P	LHS	EP_FLAB-P	-	ANNUAL	-	3	1	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC_ACT	UCPWR_FLAB-S	LHS	EP_FLAB-S	-	ANNUAL	-	3	1	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC_CAP	UCPWR_FLAB-N	LHS	KEBATC00	-	-	-	3	0	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC_CAP	UCPWR_FLAB-N	LHS	KEBMST00	-	-	-	3	-0.36716	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC_CAP	UCPWR_FLAB-N	LHS	KEBMST01	-	-	-	3	-0.36716	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC_CAP	UCPWR_FLAB-N	LHS	KEBMST10	-	-	-	3	-0.36716	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC_CAP	UCPWR_FLAB-N	LHS	KEBWST00	-	-	-	3	-0.36716	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC_CAP	UCPWR_FLAB-N	LHS	KECOSC00	-	-	-	3	0	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC_CAP	UCPWR_FLAB-N	LHS	KECOSC10	-	-	-	3	0	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC_CAP	UCPWR_FLAB-N	LHS	KECOSC11	-	-	-	3	0	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC_CAP	UCPWR_FLAB-N	LHS	KEGOCV00	-	-	-	3	-0.50729	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC_CAP	UCPWR_FLAB-N	LHS	KEGOCV01	-	-	-	3	-0.50729	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC_CAP	UCPWR_FLAB-N	LHS	KEGOCV02	-	-	-	3	-0.50729	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC_CAP	UCPWR_FLAB-N	LHS	KEGOCV03	-	-	-	3	-0.50729	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC_CAP	UCPWR_FLAB-N	LHS	KEGOCV10	-	-	-	3	-0.50729	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC_CAP	UCPWR_FLAB-N	LHS	KEGOCV11	-	-	-	3	-0.50729	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC_CAP	UCPWR_FLAB-N	LHS	KEGOCV12	-	-	-	3	-0.50729	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC_CAP	UCPWR_FLAB-N	LHS	KEGOCV13	-	-	-	3	-0.50729	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC_CAP	UCPWR_FLAB-N	LHS	KEGOCV14	-	-	-	3	-0.50729	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC_CAP	UCPWR_FLAB-N	LHS	KEGOCV15	-	-	-	3	-0.50729	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC_CAP	UCPWR_FLAB-N	LHS	KEGOCV16	-	-	-	3	-0.50729	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC_CAP	UCPWR_FLAB-N	LHS	KEGOCV17	-	-	-	3	-0.50729	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC_CAP	UCPWR_FLAB-N	LHS	KEGOCV18	-	-	-	3	-0.50729	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC_CAP	UCPWR_FLAB-N	LHS	KEGOCV20	-	-	-	3	-0.50729	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC_CAP	UCPWR_FLAB-N	LHS	KEHYDM00	-	-	-	3	-0.36716	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC_CAP	UCPWR_FLAB-N	LHS	KEHYDT01	-	-	-	3	-0.36716	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC_CAP	UCPWR_FLAB-N	LHS	KEHYDT02	-	-	-	3	-0.36716	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC_CAP	UCPWR_FLAB-N	LHS	KEHYDT03	-	-	-	3	-0.36716	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC_CAP	UCPWR_FLAB-N	LHS	KEHYMI00	-	-	-	3	-0.36716	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC_CAP	UCPWR_FLAB-N	LHS	KEHYMI09	-	-	-	3	-0.36716	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC_CAP	UCPWR_FLAB-N	LHS	KEHYRO00	-	-	-	3	-0.36716	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC_CAP	UCPWR_FLAB-N	LHS	KEHYRO04	-	-	-	3	-0.36716	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC_CAP	UCPWR_FLAB-N	LHS	KEHYRO05	-	-	-	3	-0.36716	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC_CAP	UCPWR_FLAB-N	LHS	KEHYRO06	-	-	-	3	-0.36716	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC_CAP	UCPWR_FLAB-N	LHS	KEHYRO07	-	-	-	3	-0.36716	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC_CAP	UCPWR_FLAB-N	LHS	KEHYRO08	-	-	-	3	-0.36716	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC_CAP	UCPWR_FLAB-N	LHS	KEHYRO10	-	-	-	3	-0.36716	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC_CAP	UCPWR_FLAB-N	LHS	KEHYRO20	-	-	-	3	-0.36716	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC_CAP	UCPWR_FLAB-N	LHS	KEHYRO21	-	-	-	3	-0.36716	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC_CAP	UCPWR_FLAB-N	LHS	KEHYRO22	-	-	-	3	-0.36716	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC_CAP	UCPWR_FLAB-N	LHS	KENUPW00	-	-	-	3	0	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC_CAP	UCPWR_FLAB-N	LHS	KENUPW20	-	-	-	3	0	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC_CAP	UCPWR_FLAB-N	LHS	KESOPB00	-	-	-	3	-0.41431	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC_CAP	UCPWR_FLAB-N	LHS	KESOPC00	-	-	-	3	-0.41431	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC_CAP	UCPWR_FLAB-N	LHS	KESOPCE001	-	-	-	3	-0.41431	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC_CAP	UCPWR_FLAB-N	LHS	KESOPCZ001	-	-	-	3	-0.41431	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC_CAP	UCPWR_FLAB-N	LHS	KESOPCZ002	-	-	-	3	-0.41431	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC_CAP	UCPWR_FLAB-N	LHS	KESOPCZ003	-	-	-	3	-0.41431	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC_CAP	UCPWR_FLAB-N	LHS	KESOPCZ004	-	-	-	3	-0.41431	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC_CAP	UCPWR_FLAB-N	LHS	KESOPCZ005	-	-	-	3	-0.41431	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC_CAP	UCPWR_FLAB-N	LHS	KESOPCZ006	-	-	-	3	-0.41431	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC_CAP	UCPWR_FLAB-N	LHS	KESOPCZ007	-	-	-	3	-0.41431	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC_CAP	UCPWR_FLAB-N	LHS	KESOPCZ008	-	-	-	3	-0.41431	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC_CAP	UCPWR_FLAB-N	LHS	KESOPCZ009	-	-	-	3	-0.41431	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC_CAP	UCPWR_FLAB-N	LHS	KESOPCZ010	-	-	-	3	-0.41431	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC_CAP	UCPWR_FLAB-N	LHS	KESOPR00	-	-	-	3	-0.41431	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC_CAP	UCPWR_FLAB-N	LHS	KESOPS00	-	-	-	3	-0.41431	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC_CAP	UCPWR_FLAB-N	LHS	KESOPU00	-	-	-	3	-0.41431	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC_CAP	UCPWR_FLAB-N	LHS	KESOTG00	-	-	-	3	-0.50729	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC_CAP	UCPWR_FLAB-N	LHS	KESOTN00	-	-	-	3	-0.50729	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC_CAP	UCPWR_FLAB-N	LHS	KESOTS00	-	-	-	3	-0.50729	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC_CAP	UCPWR_FLAB-N	LHS	KEWDLC00	-	-	-	3	-0.34254	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC_CAP	UCPWR_FLAB-N	LHS	KEWDLCE001	-	-	-	3	0	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC_CAP	UCPWR_FLAB-N	LHS	KEWDLCE002	-	-	-	3	0	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC_CAP	UCPWR_FLAB-N	LHS	KEWDLCE003	-	-	-	3	0	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC_CAP	UCPWR_FLAB-N	LHS	KEWDLCZ001	-	-	-	3	-0.34254	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC_CAP	UCPWR_FLAB-N	LHS	KEWDLCZ002	-	-	-	3	-0.34254	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC_CAP	UCPWR_FLAB-N	LHS	KEWDLCZ003	-	-	-	3	-0.34254	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC_CAP	UCPWR_FLAB-N	LHS	KEWDLCZ004	-	-	-	3	-0.34254	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC_CAP	UCPWR_FLAB-N	LHS	KEWDLCZ005	-	-	-	3	-0.34254	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC_CAP	UCPWR_FLAB-N	LHS	KEWDLCZ006	-	-	-	3	-0.34254	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC_CAP	UCPWR_FLAB-N	LHS	KEWDLCZ007	-	-	-	3	-0.34254	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC_CAP	UCPWR_FLAB-N	LHS	KEWDLCZ008	-	-	-	3	-0.34254	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC_CAP	UCPWR_FLAB-N	LHS	KEWDLCZ009	-	-	-	3	0	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC_CAP	UCPWR_FLAB-N	LHS	KEWDLCZ010	-	-	-	3	0	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC_CAP	UCPWR_FLAB-N	LHS	KEWDLCZDP09	-	-	-	3	0	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC_CAP	UCPWR_FLAB-N	LHS	KEWDLCZH08	-	-	-	3	0	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC_CAP	UCPWR_FLAB-P	LHS	KEBATC00	-	-	-	3	0	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC_CAP	UCPWR_FLAB-P	LHS	KEBMST00	-	-	-	3	-0.37653	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC_CAP	UCPWR_FLAB-P	LHS	KEBMST01	-	-	-	3	-0.37653	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC_CAP	UCPWR_FLAB-P	LHS	KEBMST10	-	-	-	3	-0.37653	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC_CAP	UCPWR_FLAB-P	LHS	KEBWST00	-	-	-	3	-0.37653	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC_CAP	UCPWR_FLAB-P	LHS	KECOSC00	-	-	-	3	0	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC_CAP	UCPWR_FLAB-P	LHS	KECOSC10	-	-	-	3	0	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC_CAP	UCPWR_FLAB-P	LHS	KECOSC11	-	-	-	3	0	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC_CAP	UCPWR_FLAB-P	LHS	KEGOCV00	-	-	-	3	-0.52023	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC_CAP	UCPWR_FLAB-P	LHS	KEGOCV01	-	-	-	3	-0.52023	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC_CAP	UCPWR_FLAB-P	LHS	KEGOCV02	-	-	-	3	-0.52023	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC_CAP	UCPWR_FLAB-P	LHS	KEGOCV03	-	-	-	3	-0.52023	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC_CAP	UCPWR_FLAB-P	LHS	KEGOCV10	-	-	-	3	-0.52023	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC_CAP	UCPWR_FLAB-P	LHS	KEGOCV11	-	-	-	3	-0.52023	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC_CAP	UCPWR_FLAB-P	LHS	KEGOCV12	-	-	-	3	-0.52023	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC_CAP	UCPWR_FLAB-P	LHS	KEGOCV13	-	-	-	3	-0.52023	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC_CAP	UCPWR_FLAB-P	LHS	KEGOCV14	-	-	-	3	-0.52023	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC_CAP	UCPWR_FLAB-P	LHS	KEGOCV15	-	-	-	3	-0.52023	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC_CAP	UCPWR_FLAB-P	LHS	KEGOCV16	-	-	-	3	-0.52023	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC_CAP	UCPWR_FLAB-P	LHS	KEGOCV17	-	-	-	3	-0.52023	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC_CAP	UCPWR_FLAB-P	LHS	KEGOCV18	-	-	-	3	-0.52023	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC_CAP	UCPWR_FLAB-P	LHS	KEGOCV20	-	-	-	3	-0.52023	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC_CAP	UCPWR_FLAB-P	LHS	KEHYDM00	-	-	-	3	-0.37653	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC_CAP	UCPWR_FLAB-P	LHS	KEHYDT01	-	-	-	3	-0.37653	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC_CAP	UCPWR_FLAB-P	LHS	KEHYDT02	-	-	-	3	-0.37653	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC_CAP	UCPWR_FLAB-P	LHS	KEHYDT03	-	-	-	3	-0.37653	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC_CAP	UCPWR_FLAB-P	LHS	KEHYMI00	-	-	-	3	-0.37653	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC_CAP	UCPWR_FLAB-P	LHS	KEHYMI09	-	-	-	3	-0.37653	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC_CAP	UCPWR_FLAB-P	LHS	KEHYRO00	-	-	-	3	-0.37653	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC_CAP	UCPWR_FLAB-P	LHS	KEHYRO04	-	-	-	3	-0.37653	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC_CAP	UCPWR_FLAB-P	LHS	KEHYRO05	-	-	-	3	-0.37653	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC_CAP	UCPWR_FLAB-P	LHS	KEHYRO06	-	-	-	3	-0.37653	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC_CAP	UCPWR_FLAB-P	LHS	KEHYRO07	-	-	-	3	-0.37653	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC_CAP	UCPWR_FLAB-P	LHS	KEHYRO08	-	-	-	3	-0.37653	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC_CAP	UCPWR_FLAB-P	LHS	KEHYRO10	-	-	-	3	-0.37653	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC_CAP	UCPWR_FLAB-P	LHS	KEHYRO20	-	-	-	3	-0.37653	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC_CAP	UCPWR_FLAB-P	LHS	KEHYRO21	-	-	-	3	-0.37653	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC_CAP	UCPWR_FLAB-P	LHS	KEHYRO22	-	-	-	3	-0.37653	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC_CAP	UCPWR_FLAB-P	LHS	KENUPW00	-	-	-	3	0	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC_CAP	UCPWR_FLAB-P	LHS	KENUPW20	-	-	-	3	0	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC_CAP	UCPWR_FLAB-P	LHS	KESOPB00	-	-	-	3	-0.42488	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC_CAP	UCPWR_FLAB-P	LHS	KESOPC00	-	-	-	3	-0.42488	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC_CAP	UCPWR_FLAB-P	LHS	KESOPCE001	-	-	-	3	-0.42488	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC_CAP	UCPWR_FLAB-P	LHS	KESOPCZ001	-	-	-	3	-0.42488	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC_CAP	UCPWR_FLAB-P	LHS	KESOPCZ002	-	-	-	3	-0.42488	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC_CAP	UCPWR_FLAB-P	LHS	KESOPCZ003	-	-	-	3	-0.42488	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC_CAP	UCPWR_FLAB-P	LHS	KESOPCZ004	-	-	-	3	-0.42488	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC_CAP	UCPWR_FLAB-P	LHS	KESOPCZ005	-	-	-	3	-0.42488	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC_CAP	UCPWR_FLAB-P	LHS	KESOPCZ006	-	-	-	3	-0.42488	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC_CAP	UCPWR_FLAB-P	LHS	KESOPCZ007	-	-	-	3	-0.42488	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC_CAP	UCPWR_FLAB-P	LHS	KESOPCZ008	-	-	-	3	-0.42488	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC_CAP	UCPWR_FLAB-P	LHS	KESOPCZ009	-	-	-	3	-0.42488	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC_CAP	UCPWR_FLAB-P	LHS	KESOPCZ010	-	-	-	3	-0.42488	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC_CAP	UCPWR_FLAB-P	LHS	KESOPR00	-	-	-	3	-0.42488	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC_CAP	UCPWR_FLAB-P	LHS	KESOPS00	-	-	-	3	-0.42488	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC_CAP	UCPWR_FLAB-P	LHS	KESOPU00	-	-	-	3	-0.42488	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC_CAP	UCPWR_FLAB-P	LHS	KESOTG00	-	-	-	3	-0.52023	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC_CAP	UCPWR_FLAB-P	LHS	KESOTN00	-	-	-	3	-0.52023	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC_CAP	UCPWR_FLAB-P	LHS	KESOTS00	-	-	-	3	-0.52023	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC_CAP	UCPWR_FLAB-P	LHS	KEWDLC00	-	-	-	3	-0.35128	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC_CAP	UCPWR_FLAB-P	LHS	KEWDLCE001	-	-	-	3	0	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC_CAP	UCPWR_FLAB-P	LHS	KEWDLCE002	-	-	-	3	0	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC_CAP	UCPWR_FLAB-P	LHS	KEWDLCE003	-	-	-	3	0	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC_CAP	UCPWR_FLAB-P	LHS	KEWDLCZ001	-	-	-	3	-0.35128	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC_CAP	UCPWR_FLAB-P	LHS	KEWDLCZ002	-	-	-	3	-0.35128	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC_CAP	UCPWR_FLAB-P	LHS	KEWDLCZ003	-	-	-	3	-0.35128	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC_CAP	UCPWR_FLAB-P	LHS	KEWDLCZ004	-	-	-	3	-0.35128	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC_CAP	UCPWR_FLAB-P	LHS	KEWDLCZ005	-	-	-	3	-0.35128	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC_CAP	UCPWR_FLAB-P	LHS	KEWDLCZ006	-	-	-	3	-0.35128	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC_CAP	UCPWR_FLAB-P	LHS	KEWDLCZ007	-	-	-	3	-0.35128	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC_CAP	UCPWR_FLAB-P	LHS	KEWDLCZ008	-	-	-	3	-0.35128	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC_CAP	UCPWR_FLAB-P	LHS	KEWDLCZ009	-	-	-	3	0	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC_CAP	UCPWR_FLAB-P	LHS	KEWDLCZ010	-	-	-	3	0	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC_CAP	UCPWR_FLAB-P	LHS	KEWDLCZDP09	-	-	-	3	0	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC_CAP	UCPWR_FLAB-P	LHS	KEWDLCZH08	-	-	-	3	0	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC_CAP	UCPWR_FLAB-S	LHS	KEBATC00	-	-	-	3	0	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC_CAP	UCPWR_FLAB-S	LHS	KEBMST00	-	-	-	3	-0.36501	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC_CAP	UCPWR_FLAB-S	LHS	KEBMST01	-	-	-	3	-0.36501	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC_CAP	UCPWR_FLAB-S	LHS	KEBMST10	-	-	-	3	-0.36501	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC_CAP	UCPWR_FLAB-S	LHS	KEBWST00	-	-	-	3	-0.36501	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC_CAP	UCPWR_FLAB-S	LHS	KECOSC00	-	-	-	3	0	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC_CAP	UCPWR_FLAB-S	LHS	KECOSC10	-	-	-	3	0	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC_CAP	UCPWR_FLAB-S	LHS	KECOSC11	-	-	-	3	0	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC_CAP	UCPWR_FLAB-S	LHS	KEGOCV00	-	-	-	3	-0.50431	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC_CAP	UCPWR_FLAB-S	LHS	KEGOCV01	-	-	-	3	-0.50431	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC_CAP	UCPWR_FLAB-S	LHS	KEGOCV02	-	-	-	3	-0.50431	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC_CAP	UCPWR_FLAB-S	LHS	KEGOCV03	-	-	-	3	-0.50431	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC_CAP	UCPWR_FLAB-S	LHS	KEGOCV10	-	-	-	3	-0.50431	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC_CAP	UCPWR_FLAB-S	LHS	KEGOCV11	-	-	-	3	-0.50431	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC_CAP	UCPWR_FLAB-S	LHS	KEGOCV12	-	-	-	3	-0.50431	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC_CAP	UCPWR_FLAB-S	LHS	KEGOCV13	-	-	-	3	-0.50431	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC_CAP	UCPWR_FLAB-S	LHS	KEGOCV14	-	-	-	3	-0.50431	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC_CAP	UCPWR_FLAB-S	LHS	KEGOCV15	-	-	-	3	-0.50431	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC_CAP	UCPWR_FLAB-S	LHS	KEGOCV16	-	-	-	3	-0.50431	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC_CAP	UCPWR_FLAB-S	LHS	KEGOCV17	-	-	-	3	-0.50431	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC_CAP	UCPWR_FLAB-S	LHS	KEGOCV18	-	-	-	3	-0.50431	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC_CAP	UCPWR_FLAB-S	LHS	KEGOCV20	-	-	-	3	-0.50431	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC_CAP	UCPWR_FLAB-S	LHS	KEHYDM00	-	-	-	3	-0.36501	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC_CAP	UCPWR_FLAB-S	LHS	KEHYDT01	-	-	-	3	-0.36501	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC_CAP	UCPWR_FLAB-S	LHS	KEHYDT02	-	-	-	3	-0.36501	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC_CAP	UCPWR_FLAB-S	LHS	KEHYDT03	-	-	-	3	-0.36501	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC_CAP	UCPWR_FLAB-S	LHS	KEHYMI00	-	-	-	3	-0.36501	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC_CAP	UCPWR_FLAB-S	LHS	KEHYMI09	-	-	-	3	-0.36501	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC_CAP	UCPWR_FLAB-S	LHS	KEHYRO00	-	-	-	3	-0.36501	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC_CAP	UCPWR_FLAB-S	LHS	KEHYRO04	-	-	-	3	-0.36501	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC_CAP	UCPWR_FLAB-S	LHS	KEHYRO05	-	-	-	3	-0.36501	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC_CAP	UCPWR_FLAB-S	LHS	KEHYRO06	-	-	-	3	-0.36501	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC_CAP	UCPWR_FLAB-S	LHS	KEHYRO07	-	-	-	3	-0.36501	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC_CAP	UCPWR_FLAB-S	LHS	KEHYRO08	-	-	-	3	-0.36501	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC_CAP	UCPWR_FLAB-S	LHS	KEHYRO10	-	-	-	3	-0.36501	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC_CAP	UCPWR_FLAB-S	LHS	KEHYRO20	-	-	-	3	-0.36501	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC_CAP	UCPWR_FLAB-S	LHS	KEHYRO21	-	-	-	3	-0.36501	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC_CAP	UCPWR_FLAB-S	LHS	KEHYRO22	-	-	-	3	-0.36501	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC_CAP	UCPWR_FLAB-S	LHS	KENUPW00	-	-	-	3	0	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC_CAP	UCPWR_FLAB-S	LHS	KENUPW20	-	-	-	3	0	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC_CAP	UCPWR_FLAB-S	LHS	KESOPB00	-	-	-	3	-0.41188	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC_CAP	UCPWR_FLAB-S	LHS	KESOPC00	-	-	-	3	-0.41188	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC_CAP	UCPWR_FLAB-S	LHS	KESOPCE001	-	-	-	3	-0.41188	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC_CAP	UCPWR_FLAB-S	LHS	KESOPCZ001	-	-	-	3	-0.41188	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC_CAP	UCPWR_FLAB-S	LHS	KESOPCZ002	-	-	-	3	-0.41188	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC_CAP	UCPWR_FLAB-S	LHS	KESOPCZ003	-	-	-	3	-0.41188	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC_CAP	UCPWR_FLAB-S	LHS	KESOPCZ004	-	-	-	3	-0.41188	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC_CAP	UCPWR_FLAB-S	LHS	KESOPCZ005	-	-	-	3	-0.41188	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC_CAP	UCPWR_FLAB-S	LHS	KESOPCZ006	-	-	-	3	-0.41188	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC_CAP	UCPWR_FLAB-S	LHS	KESOPCZ007	-	-	-	3	-0.41188	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC_CAP	UCPWR_FLAB-S	LHS	KESOPCZ008	-	-	-	3	-0.41188	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC_CAP	UCPWR_FLAB-S	LHS	KESOPCZ009	-	-	-	3	-0.41188	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC_CAP	UCPWR_FLAB-S	LHS	KESOPCZ010	-	-	-	3	-0.41188	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC_CAP	UCPWR_FLAB-S	LHS	KESOPR00	-	-	-	3	-0.41188	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC_CAP	UCPWR_FLAB-S	LHS	KESOPS00	-	-	-	3	-0.41188	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC_CAP	UCPWR_FLAB-S	LHS	KESOPU00	-	-	-	3	-0.41188	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC_CAP	UCPWR_FLAB-S	LHS	KESOTG00	-	-	-	3	-0.50431	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC_CAP	UCPWR_FLAB-S	LHS	KESOTN00	-	-	-	3	-0.50431	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC_CAP	UCPWR_FLAB-S	LHS	KESOTS00	-	-	-	3	-0.50431	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC_CAP	UCPWR_FLAB-S	LHS	KEWDLC00	-	-	-	3	-0.34053	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC_CAP	UCPWR_FLAB-S	LHS	KEWDLCE001	-	-	-	3	0	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC_CAP	UCPWR_FLAB-S	LHS	KEWDLCE002	-	-	-	3	0	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC_CAP	UCPWR_FLAB-S	LHS	KEWDLCE003	-	-	-	3	0	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC_CAP	UCPWR_FLAB-S	LHS	KEWDLCZ001	-	-	-	3	-0.34053	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC_CAP	UCPWR_FLAB-S	LHS	KEWDLCZ002	-	-	-	3	-0.34053	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC_CAP	UCPWR_FLAB-S	LHS	KEWDLCZ003	-	-	-	3	-0.34053	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC_CAP	UCPWR_FLAB-S	LHS	KEWDLCZ004	-	-	-	3	-0.34053	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC_CAP	UCPWR_FLAB-S	LHS	KEWDLCZ005	-	-	-	3	-0.34053	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC_CAP	UCPWR_FLAB-S	LHS	KEWDLCZ006	-	-	-	3	-0.34053	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC_CAP	UCPWR_FLAB-S	LHS	KEWDLCZ007	-	-	-	3	-0.34053	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC_CAP	UCPWR_FLAB-S	LHS	KEWDLCZ008	-	-	-	3	-0.34053	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC_CAP	UCPWR_FLAB-S	LHS	KEWDLCZ009	-	-	-	3	0	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC_CAP	UCPWR_FLAB-S	LHS	KEWDLCZ010	-	-	-	3	0	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC_CAP	UCPWR_FLAB-S	LHS	KEWDLCZDP09	-	-	-	3	0	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	UC_CAP	UCPWR_FLAB-S	LHS	KEWDLCZH08	-	-	-	3	0	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+
+TID DATA	REGION1
+	PRC_ACTUNT	EP_FLAB-N	-	PWR_FLAB-N	-	-	-	1	
+	PRC_ACTUNT	EP_FLAB-P	-	PWR_FLAB-P	-	-	-	1	
+	PRC_ACTUNT	EP_FLAB-S	-	PWR_FLAB-S	-	-	-	1	
+	PRC_ACTUNT	MIN_FLAB-N	-	FLAB-N	-	-	-	1	
+	PRC_ACTUNT	MIN_FLAB-P	-	FLAB-P	-	-	-	1	
+	PRC_ACTUNT	MIN_FLAB-S	-	FLAB-S	-	-	-	1	
+	PRC_CAPACT	EP_FLAB-N	-	-	-	-	-	1	
+	PRC_CAPACT	EP_FLAB-P	-	-	-	-	-	1	
+	PRC_CAPACT	EP_FLAB-S	-	-	-	-	-	1	
+	PRC_CAPACT	MIN_FLAB-N	-	-	-	-	-	1	
+	PRC_CAPACT	MIN_FLAB-P	-	-	-	-	-	1	
+	PRC_CAPACT	MIN_FLAB-S	-	-	-	-	-	1	
+	TOP-IN	EP_FLAB-N	FLAB-N	-	-	-	-	1	
+	TOP-IN	EP_FLAB-P	FLAB-P	-	-	-	-	1	
+	TOP-IN	EP_FLAB-S	FLAB-S	-	-	-	-	1	
+	TOP-OUT	EP_FLAB-N	PWR_FLAB-N	-	-	-	-	1	
+	TOP-OUT	EP_FLAB-P	PWR_FLAB-P	-	-	-	-	1	
+	TOP-OUT	EP_FLAB-S	PWR_FLAB-S	-	-	-	-	1	
+	TOP-OUT	MIN_FLAB-N	FLAB-N	-	-	-	-	1	
+	TOP-OUT	MIN_FLAB-P	FLAB-P	-	-	-	-	1	
+	TOP-OUT	MIN_FLAB-S	FLAB-S	-	-	-	-	1	
+	UC_R_EACH	UCACT_FIRM	-	-	-	-	-	1	
+	UC_R_EACH	UCCAP_BATR	-	-	-	-	-	1	
+	UC_R_EACH	UCCAP_ERMELC	-	-	-	-	-	1	
+	UC_R_EACH	UCCAP_RMELCC	-	-	-	-	-	1	
+	UC_R_EACH	UCPWR_FLAB-N	-	-	-	-	-	1	
+	UC_R_EACH	UCPWR_FLAB-P	-	-	-	-	-	1	
+	UC_R_EACH	UCPWR_FLAB-S	-	-	-	-	-	1	
+
+TS TRADE	_GLOBAL,REGION1
+
+TID TRADE	_GLOBAL,REGION1
+

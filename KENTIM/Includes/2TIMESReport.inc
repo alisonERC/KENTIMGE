@@ -183,10 +183,9 @@ LOOP((PRC,TC)$(TVNCAP(TC,PRC) AND NCAP_ILED('REGION1','2015',PRC) LT 0),
 * expenditure schedule in billions (2007 from 2010)
  INVCOST(RUN,TC,PRC) = SUM(TCP, BPINV(RUN,TCP,TC,PRC))/1000;
 
-*Sum across vintages to get total annual cost (billions of rands) and convert from 2015 to 2019 Rands for CGE
+*Sum across vintages to get total annual cost (billions of USD) Kenyan shillings for the CGE
 * EINVCOST(XC,T,TT) = SUM((SUPELE AND SUPOIL), INVCOST(XC,T,TT,ELE));
- EINVCOST(RUN,TC) = SUM(PRCPower, INVCOST(RUN,TC,PRCPower))*1.22;
-* 0.852;
+ EINVCOST(RUN,TC) = SUM(PRCPower, INVCOST(RUN,TC,PRCPower))*100;
 
 * fixing end effect until we run past 2050
  EINVCOST(RUN,'2050') = EINVCOST(RUN,'2049');
@@ -239,16 +238,15 @@ LOOP((PRC,TC)$(TVNCAP(TC,PRC) AND NCAP_ILED('REGION1','2015',PRC) LT 0),
  REPORT(PRC,'ACTGRP',TC,RUN,'FOM') = TCST_FIXC('REGION1',TC,PRC);
  REPORT(PRC,'ACTGRP',TC,RUN,'VOM') = TCST_ACTC('REGION1',TC,PRC);
  REPORT(PRC,'ACTGRP',TC,RUN,'FuelCosts') = SUM(COM, TVFLOWIN(COM,TC,PRC)*T_COMBALEM('REGION1',TC,COM));
-* bm!!! If there are fixed costs, they might not be taken into account in the marginal and so would have to be added to this calc
+
+*REPORT(PRC,'ACTGRP',TC,RUN,'FuelCostsTOP') = SUM(PRC$MPRCSubSector(PRC,'Power','TakeOrPayContracts'),
+* Take or Pay contract costs are taken into account in 'FOM' for subset 'TakeorPayContracts'
 
  REPORT(PRC,'ACTGRP',TC,RUN,'CO2Tax') = TVFLOWOUT('PWRCO2S',TC,PRC)*COM_CSTCO2('REGION1',TC,'CO2EQST');
 
  REPORT(PRC,'ACTGRP',TC,RUN,'Levies') = TVFLOWOUT('PWRENV',TC,PRC)*T_COMBALEM('REGION1',TC,'PWRENV')*(-1);
 
  REPORT(PRC,'ACTGRP',TC,RUN,'ExternalityCosts') = SUM(COMEXT,TVFLOWOUT(COMEXT,TC,PRC)*T_COMBALEM('REGION1',TC,COMEXT)*(-1));
-
-
-* bm!!! would need to expand fuel cost calc if fixed costs or lower limits on coal production for power plants are set
 
 *sum the components of elec costs calcs:
  TCST_ELE(RUN,TC) = sum(PRCPower,REPORT(PRCPower,'ACTGRP',TC,RUN,'AnnInvCost')+REPORT(PRCPower,'ACTGRP',TC,RUN,'FOM')+REPORT(PRCPower,'ACTGRP',TC,RUN,'VOM')+REPORT(PRCPower,'ACTGRP',TC,RUN,'FuelCosts')+REPORT(PRCPower,'ACTGRP',TC,RUN,'CO2Tax')+REPORT(PRCPower,'ACTGRP',TC,RUN,'Levies'));
@@ -257,9 +255,22 @@ LOOP((PRC,TC)$(TVNCAP(TC,PRC) AND NCAP_ILED('REGION1','2015',PRC) LT 0),
 * Elc Price
  ETPRICE(TC) = TCST_ELE(RUN,TC)/ELC_FLOW(RUN,TC);
 
+ EPRICE(T1,TT)=PQ0('CELEC');
+
+*b apply growth rate to calculate EPRICE
+ loop(TC,
+   if(not T1(TC),
+     EPRICE(TC,TT) = EPRICE(TC-1,TT) * (ETPRICE(TC)/ETPRICE(TC-1));
+   );
+ );
+
+
+
+
+
  AggFixPrice('ELC',TC,RUN) = Sum(PRCBulkPower,(REPORT(PRCBulkPower,'ACTGRP',TC,RUN,'AnnInvCost')+REPORT(PRCBulkPower,'ACTGRP',TC,RUN,'FOM')))/TVCAP(TC,'KEEL00T00');
  AggVarCost('ELC',TC,RUN) = Sum(PRCBulkPower, (REPORT(PRCBulkPower,'ACTGRP',TC,RUN,'VOM')+REPORT(PRCBulkPower,'ACTGRP',TC,RUN,'FuelCosts')+REPORT(PRCBulkPower,'ACTGRP',TC,RUN,'CO2Tax')+REPORT(PRCBulkPower,'ACTGRP',TC,RUN,'Levies')));
- AggVarPrice('ELC',TC,RUN)$REPORT('KEEL00T00','KEEL00T',TC,RUN,'FlowOut') = AggVarCost('KEEL00T',TC,RUN)/REPORT('KEEL00T00','ELC',TC,RUN,'FlowOut');
+ AggVarPrice('ELC',TC,RUN)$REPORT('KEEL00T00','KEEL00T',TC,RUN,'FlowOut') = AggVarCost('KEEL00T',TC,RUN)/REPORT('KEEL00T00','KEEL00T',TC,RUN,'FlowOut');
 
 
 
@@ -271,11 +282,13 @@ LOOP((PRC,TC)$(TVNCAP(TC,PRC) AND NCAP_ILED('REGION1','2015',PRC) LT 0),
  TCST_ELE_INV(RUN,TC) = Sum(PRCPower,REPORT(PRCPower,'ACTGRP',TC,RUN,'AnnInvCost'));
  QFEGY_GR(RUN,TC)$TCST_ELE_INV(RUN,TC-1) = TCST_ELE_INV(RUN,TC)/TCST_ELE_INV(RUN,TC-1);
 
- FIntensity_FS('elec','fegy',TC) = TCST_ELE_INV(RUN,TC)/ELC_FLOW(RUN,TC);
+* *3.68 is to convert from USD to cedi
+ FIntensity_FS('elec','fegy',TC) = TCST_ELE_INV(RUN,TC)*3.68/ELC_FLOW(RUN,TC);
  FIntensity_FS('elec',FLAB,TC) = FLOW_OUT_FSFactors('elec',FLAB,TC)/ELC_FLOW(RUN,TC);
 
+ IFAFSGR(F,FS,TC) = 1;
  IFAFSGR(F,FS,TC)$FIntensity_FS(FS,F,TC-1) = FIntensity_FS(FS,F,TC)/FIntensity_FS(FS,F,TC-1);
-
+*! IFAFSGR(F,FS,IFACAPYRS) = 1;
 
 * Electrolyser sector - supply of electrolysers is linked to electrolyser exports and PEM electrolyser capacity in eMOD
 * ELCTCAP(TC,RUN) = TVNCAP(TC,'UELEP1HGN')+TVNCAP(TC,'IISHALKHGNO')+TVNCAP(TC,'UELEA1HGN')+TVACT(TC,'PEXHETP')*0.4;
@@ -305,12 +318,11 @@ LOOP((PRC,TC)$(TVNCAP(TC,PRC) AND NCAP_ILED('REGION1','2015',PRC) LT 0),
 
  REPORT(PRC,'ACTGRP',TC,RUN,'Investment') = INVCOST(RUN,TC,PRC);
 
-* REPORT(PRC,'ACTGRP',TC,RUN,'Employment-p')$UC_CAP('UCPWR_FLAB-P','LHS','REGION1','2012',PRC) = UC_CAP('UCPWR_FLAB-P','LHS','REGION1',TC,PRC)*(-1)*TVCAP(TC,PRC);
-* REPORT(PRC,'ACTGRP',TC,RUN,'Employment-m')$UC_CAP('UCPWR_FLAB-M','LHS','REGION1','2012',PRC) = UC_CAP('UCPWR_FLAB-M','LHS','REGION1',TC,PRC)*(-1)*TVCAP(TC,PRC);
-* REPORT(PRC,'ACTGRP',TC,RUN,'Employment-s')$UC_CAP('UCPWR_FLAB-S','LHS','REGION1','2012',PRC) = UC_CAP('UCPWR_FLAB-S','LHS','REGION1',TC,PRC)*(-1)*TVCAP(TC,PRC);
-* REPORT(PRC,'ACTGRP',TC,RUN,'Employment-t')$UC_CAP('UCPWR_FLAB-T','LHS','REGION1','2012',PRC) = UC_CAP('UCPWR_FLAB-T','LHS','REGION1',TC,PRC)*(-1)*TVCAP(TC,PRC);
+ REPORT(PRC,'ACTGRP',TC,RUN,'Employment-n')$UC_CAP('UCPWR_FLAB-N','LHS','REGION1','2015',PRC) = UC_CAP('UCPWR_FLAB-N','LHS','REGION1',TC,PRC)*(-1)*TVCAP(TC,PRC);
+ REPORT(PRC,'ACTGRP',TC,RUN,'Employment-p')$UC_CAP('UCPWR_FLAB-P','LHS','REGION1','2015',PRC) = UC_CAP('UCPWR_FLAB-P','LHS','REGION1',TC,PRC)*(-1)*TVCAP(TC,PRC);
+ REPORT(PRC,'ACTGRP',TC,RUN,'Employment-s')$UC_CAP('UCPWR_FLAB-S','LHS','REGION1','2015',PRC) = UC_CAP('UCPWR_FLAB-S','LHS','REGION1',TC,PRC)*(-1)*TVCAP(TC,PRC);
 
-* REPORT('ETRANSDUM','ELC',TC,RUN,'Price') = ETPRICE(TC);
+ REPORT('KEEL00T00','KEEL00T',TC,RUN,'Price') = ETPRICE(TC);
 
 
 * Other indicators - this could be done more elegantly

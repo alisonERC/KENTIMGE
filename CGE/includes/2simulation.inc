@@ -31,10 +31,10 @@ SETS
  AFX(A,RD)               sectors with calibrated capital stock growth
  ANFX(A,RD)              sectors without calibrated capital stock growth
  EFX(T,T)                CGE years (TP) when elec capital is fixed during TIMES years (T)
- CEGY(C)                 energy commodities   / ccoil,  celec, cpetr /
+ CEGY(C)                 energy commodities   / cngas, cpetr_d,  celec /
 *cngas to be added when part of SAM
 
-  energy(c)       energy commodities     / ccoil, cpetr, celec, cngas /
+  energy(c)       energy commodities     / cngas, cpetr_d,  celec /
 
 
 
@@ -83,7 +83,7 @@ $loaddc  FL AFX CLOSURES
 
  XBASINIT(XC,TC) = NO;
 
- EFX(T,TCP)$(TT(T) AND (ORD(T) GE ORD(TCP))) = YES;
+ EFX(TC,TCP)$(TT(TC) AND (ORD(TCP) > 5 and ORD(TCP) LE ORD(TC))) = YES;
 
  ANFX(A,RD)$(NOT AFX(A,RD)) = YES;
 
@@ -93,6 +93,9 @@ $loaddc  FL AFX CLOSURES
 *------------------------------------------------------------------------------
 
 $include cge\includes\2projection.inc
+
+
+
 
 *----------------------------------------------------------------------
 *2. Non-excel inputted scenario calibration

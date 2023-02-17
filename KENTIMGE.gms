@@ -178,7 +178,7 @@ SETS
 *FH*----------------------------------------------------------------------------
  MFHHT(H,FH) reverse mapping (TIMES to CGE) for households
 
-  Indicators eMOD indicators /Activity, Capacity, NewCapacity, CapFac, FlowIn, FlowOut, AnnInvCost, FOM, VOM, FuelCosts, Marginals, Levies, ExternalityCosts, CO2Tax, CO2, CO2C, CH4, N2O, CF4, C2F6, CO2eq, FlowInMt, Investment,Price, GVA, Population, Consumption, Employment-p, Employment-m,Employment-s,Employment-t,PalmaRatio,20-20Ratio,TradeDeficit,Imports,Exports,pkm, tkm/
+  Indicators eMOD indicators /Activity, Capacity, NewCapacity, CapFac, FlowIn, FlowOut, AnnInvCost, FOM, VOM, FuelCosts, Marginals, Levies, ExternalityCosts, CO2Tax, CO2, CO2C, CH4, N2O, CF4, C2F6, CO2eq, FlowInMt, Investment,Price, GVA, Population, Consumption, Employment-n, Employment-p,Employment-s, PalmaRatio,20-20Ratio,TradeDeficit,Imports,Exports,pkm, tkm/
   Emiss(Indicators) / CO2, CH4, N2O, CF4, C2F6, CO2eq/
   IndicatorsH eMOD Sub-annual indicators /FlowIn, FlowOut, Marginal, Price, Demand/
 
@@ -513,12 +513,8 @@ ELSE
 
   if(SIM_eMOD(RUN) eq 1,
 * Write Drivers to DMD_PROJ workbook
-         execute_unload "drivers.gdx" GVA_FS POP YHE TFHPOP MFHHT QD_FS PAMS_RUN;
-         execute 'gdxxrw.exe i=drivers.gdx o=.\KENTIM\DataSpreadsheets\DMD_PRJ.xlsx index=index_G2E!a6';
-
-* Read resulting Demand from DMD_PROJ workbook
-         execute 'gdxxrw.exe i=.\KENTIM\DataSpreadsheets\DMD_PRJ.xlsx o=EnergyDemand.gdx index=index_E2G!a6';
-         execute_load "EnergyDemand.gdx" SIM_DEMX;
+          execute_load "EnergyDemand.gdx" ELCDEM;
+          SIM_DEMX(DEM1,TC) = SUM(FSeMOD$MELCDEM(FSeMOD,DEM1),ELCDEM(FSeMOD,TC));
 
 
 * Write Demand DDS File

@@ -1,11 +1,15 @@
-* This DDS contains Rule-based constraints that occur in scenario(s) 'BASE','BACKSTOP','DMD_ALL' for region REGION1
+* This DDS contains Rule-based constraints that occur in scenario(s) 'BASE','BACKSTOP','CO2CAPXX','PWR_LAB','DMD_ALL' for region REGION1
 SET UC_N /
   'UC_PV_NCAP'       'Bound on new capacity for PV through transmission '
   'UC_WIND_NCAP'     'Bound on new capacity for wind                    '
+  'UCACT_FIRM'       'Constraint on dispatchable techs                  '
+  'UCCAP_BATR'       'Battery constraint                                '
 /;
 SET UC_N_UCRT /
   'REGION1'   .'UC_PV_NCAP'
   'REGION1'   .'UC_WIND_NCAP'
+  'REGION1'   .'UCACT_FIRM'
+  'REGION1'   .'UCCAP_BATR'
 /;
 
 * TS Data follows for Rule-based Constraint UC_PV_NCAP taken from scenario BASE
@@ -47,3 +51,9 @@ SET UC_N_UCRT /
   'REGION1'         .'UC_WIND_NCAP'    .'LHS'             .'KEWDLCZ009'               1               1               1               1               1               1               1               1               1               1               1               1               1               1               1               1               1               1               1               1               1               1               1               1               1               1               1               1               1               1               1               1               1               1               1               1
   'REGION1'         .'UC_WIND_NCAP'    .'LHS'             .'KEWDLCZ010'               1               1               1               1               1               1               1               1               1               1               1               1               1               1               1               1               1               1               1               1               1               1               1               1               1               1               1               1               1               1               1               1               1               1               1               1
 ;
+
+* TID Data follows for Rule-based Constraint UCACT_FIRM taken from scenario PWR_LAB
+PARAMETER AUC_R_EACH /
+  'REGION1'         .'UCACT_FIRM'         1
+  'REGION1'         .'UCCAP_BATR'         1
+/;

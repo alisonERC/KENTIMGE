@@ -3,7 +3,7 @@
 *----------------------------------------------------------------------
 
 
- TAPSX(X,T) = 0;
+ TAPSX(XC,TC,TT) = 0;
 
 
 
@@ -111,15 +111,45 @@ ICAGR(CXEP,A,TC) = SUM(FSXEP$MFSA(FSXEP,A),ICAFSGR(CXEP,FSXEP,TC));
 *      );
 
       if(ord(TC) < 8,
-         ica('cpetr','aelec','NAT') = ica('cpetr','aelec','NAT')*2;
-         ica('ccoil','aelec','NAT') = ica('ccoil','aelec','NAT')*0.5;
+*         ica('cpetr','aelec','NAT') = ica('cpetr','aelec','NAT')*2;
+*         ica('ccoil','aelec','NAT') = ica('ccoil','aelec','NAT')*0.5;
 
+* adjust elc intensity of mining down to same level as South Africa Gold Mining
+*         ica('celec','aomin','NAT') = ica('celec','aomin','NAT')*0.92;
       );
 
       if(ord(TC) > 4,
          ica('cngas','aelec','NAT') = max(0.00001,EIntensity_FS('elec','cngas',TC));
-         ica('cpetr','aelec','NAT') = max(0.00001,ica('cpetr','aelec','NAT')*0.5);
+         ica('cpetr_d','aelec','NAT') = max(0.00001,ica('cpetr_d','aelec','NAT')*0.5);
       );
+
+
+* Other Settings
+* electricity sector
+    AFX('AELEC',RD) = NO;
+    AFLEO('AELEC') = NO;
+    AFX('AELEC',RD)$EFX(TT,TC) = YES;
+    AFLEO('AELEC')$EFX(TT,TC) = YES;
+
+*    AFX('AELEC',RD) = YES;
+*    AFLEO('AELEC') = YES;
+
+
+    AFXGR('aelec','NAT',XC,TC)$EFX(TT,TC) = QFEGY_GR(RUN,TC)- 1;
+*    AFXGR('aelec','NAT',XC,TC) = QFEGY_GR(RUN,TC)- 1;
+
+*    WFDIST.FX('fegy','aelec','nat') = 1;
+
+
+*    CERES('CELEC') = YES;
+*    CERES('CELEC')$EFX(TT,TC) = NO;
+*    CEFIX('CELEC') = YES;
+*    CEFIX('CELEC')$EFX(TT,TC) = NO;
+*    QE.FX('CELEC','REST') = QE.L('CELEC','REST');
+*    QE.UP('CELEC','REST')$EFX(TT,TC) = Inf;
+*    QE.LO('CELEC','REST')$EFX(TT,TC) = -Inf;
+
+
 
 
 *     Exgenous transfer changes
@@ -130,7 +160,7 @@ $include cge\includes\2capital.inc
 
 *     Labor supply growth
       QF.L(FLAB,A,RD)$(NOT T1(TC)) = QF.L(FLAB,A,RD)*(1+FACGR(FLAB,XC,TC));
-      QF.L('FEGY',A,RD)$(NOT T1(TC)) = QF.L('FEGY',A,RD)*(1+FACGR('FEGY',XC,TC));
+*      QF.L('FEGY',A,RD)$(NOT T1(TC)) = QF.L('FEGY',A,RD)*(1+FACGR('FEGY',XC,TC));
       QF.L('FLND',A,RD)$(NOT T1(TC)) = QF.L('FLND',A,RD)*(1+FACGR('FLND',XC,TC));
 
 *     Total factor supply
@@ -141,6 +171,14 @@ $include cge\includes\2capital.inc
 
 $include cge\includes\2closures.inc
 
+If(not T1(TC),
+ PQ.FX('CELEC') = EPRICE(TC,TT);
+* PQ.UP('CELEC')$(not EFX(TT,TC)) = inf;
+* PQ.LO('CELEC')$(not EFX(TT,TC)) = -inf;
+
+* TQELEC.LO('CELEC') = 0;
+* TQELEC.UP('CELEC') = 1;
+);
 
  SOLVE standcge USING MCP ;
 
