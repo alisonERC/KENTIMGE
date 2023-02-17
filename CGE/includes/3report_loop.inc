@@ -349,10 +349,3 @@ execute 'xlstalk.exe -s 00output.xlsx';
 execute 'gdxxrw.exe i=00output.gdx o=00output.xlsx index=index!a6';
 execute 'xlstalk.exe -o 00output.xlsx';
 DISPLAY XLTEST;
-
-
-
-
-
-
-

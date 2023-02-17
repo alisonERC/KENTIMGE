@@ -10,6 +10,8 @@ SET
  HRA(HR)                 aggregate household reporting accounts
 ;
 
+
+
 ALIAS (AR,ARP), (ARA,ARAP), (FR,FRP), (FRA,FRAP), (HR,HRP), (HRA,HRAP);
 
 $include includes\3tables.inc
@@ -67,4 +69,3 @@ $gdxin reportdata.gdx
 
 $load   AR CR FR HR
 $loaddc ARA CRA FRA HRA ACTAGG COMAGG FACAGG HHDAGG
-

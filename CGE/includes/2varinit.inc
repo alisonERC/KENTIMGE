@@ -103,3 +103,5 @@ $offtext
  YG_DTAX.L               = YG_DTAX0;
  YG_ITAX.L               = YG_ITAX0;
  YG_NTAX.L               = YG_NTAX0;
+
+ alphavb(A,RD)           = alphavb0(A,RD);

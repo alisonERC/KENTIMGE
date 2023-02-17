@@ -3,6 +3,7 @@
 *----------------------------------------------------------------------
 
 
+ TAPSX(X,T) = 0;
 
 
 
@@ -82,14 +83,16 @@ ICAGR(CXEP,A,TC) = SUM(FSXEP$MFSA(FSXEP,A),ICAFSGR(CXEP,FSXEP,TC));
 
 *     Long term TFP growth
       alphava(A,RD) = alphava(A,RD) * (1+TFPGR(A,RD,XC,TC));
+      alphavb(A,RD) = alphavb0(A,RD)*Yldshock(A,XC,TC);
 
 *     Long term factor-specific productivity growth
-      fprd(F,A,RD)$(NOT AFX(A,RD)) = fprd(F,A,RD) * (1+FPRDGR(F,XC,TC));
+*      fprd(F,A,RD)$(NOT AFX(A,RD)) = fprd(F,A,RD) * (1+FPRDGR(F,XC,TC));
+      fprd(F,A,RD)$(NOT AFX(A,RD)) = COVIDCAP(A,F,XC,TC);
 
 *     World price changes
 *      pwebar(C,RW) = pwebar(C,RW) * (1+PWEGR(C,XC,TC));
-      PWE.L(C,RW)  = PWE.L(C,RW)  * (1+PWEGR(C,XC,TC));
-      PWM.L(C,RW)  = PWM.L(C,RW)  * (1+PWMGR(C,XC,TC));
+      PWE.L(C,RW)  = (PWE.L(C,RW)  * (1+PWEGR(C,XC,TC)))*Worldprice(C,RW,XC,TC);
+      PWM.L(C,RW)  = (PWM.L(C,RW)  * (1+PWMGR(C,XC,TC)))*Worldprice(C,RW,XC,TC);
 
 *     Population growth
       hpop(H) = hpop(H) * (1+POPGR(H,XC,TC));

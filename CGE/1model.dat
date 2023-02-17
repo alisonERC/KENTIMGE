@@ -25,15 +25,10 @@ PARAMETER
 SET
  REMEXP(C)       remove exports with small shares
 /
-* csorg, crice, cgnut, ccass, croot, csugr, ccatt, cpoul,
- cocer, cclth, cfveg, csugr
-* cocrp
 /
 
  REMIMP(C)       remove imports with small shares
 /
-csugr
-* csorg, cgnut, coils, csugr
 /
  REEXPORT(C)     remove imports with re-export problem
 /
@@ -403,7 +398,6 @@ PARAMETER
 $LOAD CALIB
 
 *Electricity generation quantities (TJ)
- QPROD('AELEC','NAT') = CALIB('AELEC','QA');
- QPROD('ANGAS','NAT') = CALIB('ANGAS','QA');
- QPROD('ACOIL','NAT') = CALIB('ACOIL','QA');
-*1000;
+ QPROD('AELEC','NAT') = CALIB('AELEC','QA')/1000;
+ QPROD('CPETR_D','NAT') = CALIB('CPETR_D','QM')/1000;
+

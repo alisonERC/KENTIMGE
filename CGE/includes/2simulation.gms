@@ -4,20 +4,15 @@ DISPLAY alphainv;
 $OFFSYMLIST OFFSYMXREF
 $ONEMPTY
 OPTIONS ITERLIM=10000, LIMROW=3, LIMCOL=3, SOLPRINT=OFF, MCP=PATH, NLP=MINOS, SOLVELINK=1;
-STANDCGE.SOLVELINK = 2;
-
-SCALAR
-   fail    track if a solve fails /0/
-;
 
 SETS
 *Simulations
-* X                       simulations
-* XC(X)                   active simulations
-* XNB(X)                  nonbase simulations
+ X                       simulations
+ XC(X)                   active simulations
+ XNB(X)                  nonbase simulations
 *Time periods
-* T                       time periods
-* TC(T)                   active time periods
+ T                       time periods
+ TC(T)                   active time periods
  TCN1(T)                 TC except base year
  T1(T)                   base year of simulation
  T2(T)                   second year of simulation
@@ -30,14 +25,6 @@ SETS
  FL(A)                   sector-specific (fixed) land demand
  AFX(A,RD)               sectors with calibrated capital stock growth
  ANFX(A,RD)              sectors without calibrated capital stock growth
- EFX(T,T)                CGE years (TP) when elec capital is fixed during TIMES years (T)
- CEGY(C)                 energy commodities   / ccoil,  celec, cpetr /
-*cngas to be added when part of SAM
-
-  energy(c)       energy commodities     / ccoil, cpetr, celec, cngas /
-
-
-
 ;
 
 ALIAS (T,TP), (TC,TCP);
@@ -60,30 +47,25 @@ PARAMETERS
  BMAT(C,FCAP)            capital composition matrix by type of capital
  PKAP(FCAP)              price of capital good by type
  GFCF                    nominal gross fixed capital formation
-
- ICAX(C,A,RD,X,T,TT)     tracking input output coefficients
-
 ;
 
-$call    "gdxxrw i=cge\%basedata% o=basedata index=index!a6 checkdate"
+$call    "gdxxrw i=%basedata% o=basedata index=index!a6 checkdate"
 $gdxin   basedata.gdx
 
-*$load    X T
-$loaddc  FL AFX CLOSURES
+$load    X T
+$loaddc  XC TC FL AFX CLOSURES
 
  T1(TC)$(ORD(TC) EQ SMIN(TCP, ORD(TCP))) = YES;
  T2(TC)$(ORD(TC) EQ 2)                   = YES;
  TN(TC)$(ORD(TC) EQ SMAX(TCP, ORD(TCP))) = YES;
  TNUM = SUM(T$TN(T), ORD(T)) - SUM(T$T1(T), ORD(T));
 
-* XC('INIT') = NO;
+ XC('INIT') = NO;
  XNUM = MAX(CARD(XC)-1,1) ;
  XNB(XC) = YES;
  XNB('BASE') = NO;
 
  XBASINIT(XC,TC) = NO;
-
- EFX(T,TCP)$(TT(T) AND (ORD(T) GE ORD(TCP))) = YES;
 
  ANFX(A,RD)$(NOT AFX(A,RD)) = YES;
 
@@ -92,97 +74,14 @@ $loaddc  FL AFX CLOSURES
 *1. Excel inputted scenario calibration
 *------------------------------------------------------------------------------
 
-$include cge\includes\2projection.inc
+$include includes\2projection.inc
 
 *----------------------------------------------------------------------
 *2. Non-excel inputted scenario calibration
 *----------------------------------------------------------------------
-Parameter
- Yldshock(A,X,T)
- Worldprice(C,RW,X,T)
-;
 
-Set
- TSHOCK(T)       /2030*2050/
-;
 
- Yldshock(A,X,T)=1;
-* Yldshock('AMAIZ','YLDSHOCK',TSHOCK)=0.8;
-* Yldshock('AMAIZ','COMBO',TSHOCK)=0.8;
 
- Worldprice(C,RW,X,T)=1;
-* Worldprice('cmaiz',RW,'worldprice',TSHOCK)=1+(0.2/(2050-2030));
-* Worldprice('cmaiz',RW,'COMBO',TSHOCK)=1+(0.2/(2050-2030));
-* Worldprice('cgmll',RW,'worldprice',TSHOCK)=1+(0.2/(2050-2030));
-* Worldprice('cgmll',RW,'COMBO',TSHOCK)=1+(0.2/(2050-2030));
-
-Parameter
- COVID(F,X,T)      scalar to reduce labour available (mimic lockdown)
- COVIDCAP(A,F,X,T) scalar to reduce capital productivity (mimic lockdown)
-;
-
-SETS
- AGR(A)  /amaiz,arice,aocer,apuls,aoils,aroot,avege,asugr,atoba,acott,afrui,acoff,aocrp,acatt,apoul,aoliv,afore,afish/
- MIN(A)  /amine,angas /
- MAN(A)  /afood,abeve,atext,awood,achem,anmet,ametl,amach,aoman/
- UTIL(A) /aelec,awatr/
- CONS(A) /acons/
- TRD(A)  /atrad,ahotl/
- TRN(A)  /atran,acomm/
- FSRV(A) /afsrv,areal,absrv/
- OTH(A)  /apadm,aeduc,aheal,aosrv/
-;
-
- COVID(F,X,T)=1;
- COVID('flab-n',X,'2020')=0.98;
- COVID('flab-p',X,'2020')=0.98;
- COVID('flab-s',X,'2020')=0.98;
-
-$ontext
- COVID('flab-n',X,'2021')=0.99;
- COVID('flab-p',X,'2021')=0.99;
- COVID('flab-s',X,'2021')=0.99;
-
- COVID('flab-n',X,'2022')=1;
- COVID('flab-p',X,'2022')=1;
- COVID('flab-s',X,'2022')=1;
-$offtext
-
- COVIDCAP(A,F,X,T)=1;
- COVIDCAP(AGR ,'FCAP',X,'2020')=1.05;
- COVIDCAP(MIN ,'FCAP',X,'2020')=1;
- COVIDCAP(MAN ,'FCAP',X,'2020')=0.95;
- COVIDCAP(UTIL,'FCAP',X,'2020')=1;
- COVIDCAP(CONS,'FCAP',X,'2020')=1.05;
- COVIDCAP(TRD ,'FCAP',X,'2020')=0.88;
- COVIDCAP(TRN ,'FCAP',X,'2020')=0.9;
- COVIDCAP(FSRV,'FCAP',X,'2020')=1;
- COVIDCAP(OTH ,'FCAP',X,'2020')=0.9;
-
-$ontext
- COVIDCAP(AGR ,'FCAP',X,'2020')=1.3;
- COVIDCAP(MIN ,'FCAP',X,'2020')=1;
- COVIDCAP(MAN ,'FCAP',X,'2020')=0.95;
- COVIDCAP(UTIL,'FCAP',X,'2020')=1;
- COVIDCAP(CONS,'FCAP',X,'2020')=2;
- COVIDCAP(TRD ,'FCAP',X,'2020')=0.75;
- COVIDCAP(TRN ,'FCAP',X,'2020')=0.9;
- COVIDCAP(FSRV,'FCAP',X,'2020')=0.95;
- COVIDCAP(OTH ,'FCAP',X,'2020')=1;
-
- COVIDCAP(AGR ,'FCAP',X,'2021')=0.9;
- COVIDCAP(MIN ,'FCAP',X,'2021')=1.2;
- COVIDCAP(MAN ,'FCAP',X,'2021')=1;
- COVIDCAP(UTIL,'FCAP',X,'2021')=1;
- COVIDCAP(CONS,'FCAP',X,'2021')=1;
- COVIDCAP(TRD ,'FCAP',X,'2021')=1;
- COVIDCAP(TRN ,'FCAP',X,'2021')=1;
- COVIDCAP(FSRV,'FCAP',X,'2021')=1;
- COVIDCAP(OTH ,'FCAP',X,'2021')=1;
-
- COVIDCAP(AGR ,'FCAP',X,'2022')=1;
- COVIDCAP(MIN ,'FCAP',X,'2022')=1;
-$offtext
 *----------------------------------------------------------------------
 *3. Closures
 *----------------------------------------------------------------------
@@ -212,9 +111,57 @@ LOOP(XC,
 *If no value is specified for a factor, impose FMOBFE:
  FMOBFE(XC,F)$(FMOBFE(XC,F) + FACTFE(XC,F) + FMOBUE(XC,F) EQ 0) = 1;
 
+*----------------------------------------------------------------------
+*4. Time period loop
+*----------------------------------------------------------------------
 
-$include cge\includes\2initialize.inc
+$include includes\2initialize.inc
 
+ TAPSX(X,T) = 0;
 
-*Initialise links to TIMES model
-$include cge\includes\2energyinit.inc
+LOOP(XC,
+
+$include includes\2varinit.inc
+
+  LOOP(TC,
+    IF(NOT T1(TC),
+
+*     Long term TFP growth
+      alphava(A,RD) = alphava(A,RD) * (1+TFPGR(A,RD,XC,TC));
+
+*     Long term factor-specific productivity growth
+      fprd(F,A,RD)$(NOT AFX(A,RD)) = fprd(F,A,RD) * (1+FPRDGR(F,XC,TC));
+
+*     World price changes
+*      pwebar(C,RW) = pwebar(C,RW) * (1+PWEGR(C,XC,TC));
+      PWE.L(C,RW)  = PWE.L(C,RW)  * (1+PWEGR(C,XC,TC));
+      PWM.L(C,RW)  = PWM.L(C,RW)  * (1+PWMGR(C,XC,TC));
+
+*     Population growth
+      hpop(H) = hpop(H) * (1+POPGR(H,XC,TC));
+
+*     Exgenous transfer changes
+      trnsfr(INS,ACNT) = trnsfr(INS,ACNT) * (1+TRNSFRGR(INS,ACNT,XC,TC));
+
+*     Capital stock accumulation and allocation
+$include includes\2capital.inc
+
+*     Labor supply growth
+      QF.L(FLAB,A,RD)$(NOT T1(TC)) = QF.L(FLAB,A,RD)*(1+FACGR(FLAB,XC,TC));
+      QF.L('FEGY',A,RD)$(NOT T1(TC)) = QF.L('FEGY',A,RD)*(1+FACGR('FEGY',XC,TC));
+      QF.L('FLND',A,RD)$(NOT T1(TC)) = QF.L('FLND',A,RD)*(1+FACGR('FLND',XC,TC));
+
+*     Total factor supply
+      QFS.L(F) = SUM((RD,A), QF.L(F,A,RD));
+
+    );
+
+$include includes\2closures.inc
+
+ STANDCGE.SOLVELINK = 2;
+ SOLVE standcge USING MCP ;
+
+$include includes\2results.inc
+
+  );
+);

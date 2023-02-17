@@ -253,9 +253,11 @@ PARAMETERS
 ;
 
 
- GDPTAB1('NOMINAL','PRVCON',XC,TC)   = SUM((C,H), PQX(C,XC,TC)*QHX(C,H,XC,TC))
+* GDPTAB1('NOMINAL','PRVCON',XC,TC)   = SUM((C,H), PQX(C,XC,TC)*QHX(C,H,XC,TC))
+ GDPTAB1('NOMINAL','PRVCON',XC,TC)   = SUM((C,H), PQHX(C,H,XC,TC)*QHX(C,H,XC,TC))
                                      + SUM((A,H), PAX(A,XC,TC)*QHAX(A,H,XC,TC));
- GDPTAB1('REAL','PRVCON',XC,TC)      = SUM((C,H), PQ0(C)*QHX(C,H,XC,TC))
+* GDPTAB1('REAL','PRVCON',XC,TC)      = SUM((C,H), PQ0(C)*QHX(C,H,XC,TC))
+ GDPTAB1('REAL','PRVCON',XC,TC)      = SUM((C,H), PQH0(C,H)*QHX(C,H,XC,TC))
                                      + SUM((A,H), PA0(A)*QHAX(A,H,XC,TC));
  GDPTAB1('NOMINAL','FIXINV',XC,TC)   = SUM((C,IT), PQX(C,XC,TC)*QINVX(C,IT,XC,TC));
  GDPTAB1('REAL','FIXINV',XC,TC)      = SUM((C,IT), PQ0(C)*QINVX(C,IT,XC,TC));
@@ -282,6 +284,9 @@ PARAMETERS
          + SUM((RW,CM), TMX(CM,RW,XC,TC)*QMX(CM,RW,XC,TC)*PWMX(CM,RW,XC,TC))*EXRX(XC,TC)
          + SUM((RW,CE), te(CE,RW)*QEX(CE,RW,XC,TC)*PWEX(CE,RW,XC,TC))*EXRX(XC,TC)
          + SUM(C, TQX(C,XC,TC)*PQX(C,XC,TC)*QQX(C,XC,TC))
+*fh energy - utax
+          + SUM((C,A,RD), tui(C,A,RD)*PQX(C,XC,TC)*QINTAX(A,RD,XC,TC)*ica(C,A,RD))
+          + SUM((C,H), tuh(C,H)*PQX(C,XC,TC)*QHX(C,H,XC,TC));
          ;
 
  GDPTAB1('REAL','NETITAX',XC,TC)
@@ -290,6 +295,9 @@ PARAMETERS
          + SUM((RW,CM), tm0(CM,RW)*QMX(CM,RW,XC,TC)*PWM0(CM,RW))*EXR0
          + SUM((RW,CE), te0(CE,RW)*QEX(CE,RW,XC,TC)*PWE0(CE,RW))*EXR0
          + SUM(C, tq0(C)*PQ0(C)*QQX(C,XC,TC))
+*fh energy - utax
+          + SUM((C,A,RD), tui0(C,A,RD)*PQ0(C)*QINTAX(A,RD,XC,TC)*ica(C,A,RD))
+          + SUM((C,H), tuh0(C,H)*PQ0(C)*QHX(C,H,XC,TC));
          ;
 
  GDPTAB1('NOMINAL','GDPMP2',XC,TC)            = GDPTAB1('NOMINAL','GDPFC2',XC,TC) + GDPTAB1('NOMINAL','NETITAX',XC,TC);

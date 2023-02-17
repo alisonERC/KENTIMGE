@@ -486,6 +486,8 @@ PARAMETER TRMSHR(C,RW);
 *fh electricity included as net exports
 * QM0('CELEC','REST') = CALIB('AELEC','QM');
 * PM0('CELEC','REST')$QM0('CELEC','REST') = (SAM('ROW','CELEC')+SAM('MTAX','CELEC')+SAM('TRM','CELEC')) / QM0('CELEC','REST');
+ QM0('CPETR_D','REST') = QPROD('CPETR_D','NAT');
+ PM0('CPETR_D','REST')$QM0('CPETR_D','REST') = (SAM('ROW','CPETR_D')+SAM('MTAX','CPETR_D')+SAM('TRM','CPETR_D')) / QM0('CPETR_D','REST');
 
 *World price = import value (in foreign currency / import quantity
  PWM0(C,RW)$CMRW(C,RW) = (SAM('ROW',C)*REGIMP(C,RW)/EXR0) / QM0(C,RW);
@@ -1417,7 +1419,15 @@ EQUATIONS
 
  LEOAGGVA(A,RD)$QVA0(A,RD)..     QVA(A,RD) =E= iva(A,RD)*QAR(A,RD);
 
- CESVAPRD(A,RD)$(QVA0(A,RD) AND NOT AFLEO(A))..   QVA(A,RD) =E= alphava(A,RD)*
+Parameter
+alphavb0(A,RD)
+alphavb(A,RD)
+;
+
+alphavb0(A,RD)=1;
+alphavb(A,RD)=alphavb0(A,RD);
+
+ CESVAPRD(A,RD)$(QVA0(A,RD) AND NOT AFLEO(A))..   QVA(A,RD) =E= alphava(A,RD)*alphavb(A,RD)*
          (SUM(F$MFA1(F,A,RD), deltava(F,A,RD)*(fprd(F,A,RD)*QF(F,A,RD))**(-rhova(A,RD))) )**(-1/rhova(A,RD)) ;
 
  CESVAFOC(F,A,RD)$(MFA1(F,A,RD) AND QF0(F,A,RD) AND QVA0(A,RD)  AND NOT AFLEO(A))..
