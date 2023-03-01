@@ -8,8 +8,8 @@
 
 
 LOOP(XC$MRUNX(RUN,XC),
- execute_load "dem_start.gdx" ELCDEM
- execute_unload "EnergyDemand.gdx" ELCDEM
+*! execute_load "dem_start.gdx" ELCDEM
+*! execute_unload "EnergyDemand.gdx" ELCDEM
 
  LOOP(TT$(NOT fail),
 
@@ -119,8 +119,8 @@ ICAGR(CXEP,A,TC) = SUM(FSXEP$MFSA(FSXEP,A),ICAFSGR(CXEP,FSXEP,TC));
       );
 
       if(ord(TC) > 4,
-         ica('cngas','aelec','NAT') = max(0.00001,EIntensity_FS('elec','cngas',TC));
-         ica('cpetr_d','aelec','NAT') = max(0.00001,ica('cpetr_d','aelec','NAT')*0.5);
+*!         ica('cngas','aelec','NAT') = max(0.00001,EIntensity_FS('elec','cngas',TC));
+*!         ica('cpetr_d','aelec','NAT') = max(0.00001,ica('cpetr_d','aelec','NAT')*0.5);
       );
 
 
@@ -172,7 +172,7 @@ $include cge\includes\2capital.inc
 $include cge\includes\2closures.inc
 
 If(not T1(TC),
- PQ.FX('CELEC') = EPRICE(TC,TT);
+* PQ.FX('CELEC') = EPRICE(TC,TT);
 * PQ.UP('CELEC')$(not EFX(TT,TC)) = inf;
 * PQ.LO('CELEC')$(not EFX(TT,TC)) = -inf;
 
