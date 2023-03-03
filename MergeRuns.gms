@@ -23,8 +23,8 @@ Parameters
 
 FILE Scen;
 
-$call   "gdxxrw i=GHATIMGE.xlsm o=GHATIMGE index=index!a6 checkdate"
-$gdxin  GHATIMGE.gdx
+$call   "gdxxrw i=KENTIMGE.xlsm o=KENTIMGE index=index!a6 checkdate"
+$gdxin  KENTIMGE.gdx
 $load RUN INCLRUN TC
 
 $call   "gdxxrw i=SetsAndMaps\SetsAndMaps.xlsm o=SetsAndMaps\SetsMaps index=index!a6 checkdate"

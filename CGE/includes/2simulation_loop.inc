@@ -24,7 +24,6 @@ if(SIM_eMOD(RUN) eq 1,
 *         execute_load "EnergyDemand.gdx" SIM_DEMX;
           execute_load "EnergyDemand.gdx" ELCDEM;
           SIM_DEMX(DEM1,TC) = SUM(FSeMOD$MELCDEM(FSeMOD,DEM1),ELCDEM(FSeMOD,TC));
-* Need to Add Occupancy and Freight loading per vehicle category to calculate pkm and tkm
 
 * Adjust Transport Demand
 *  LOOP(TC$(ORD(TC) gt 6),
@@ -126,16 +125,16 @@ ICAGR(CXEP,A,TC) = SUM(FSXEP$MFSA(FSXEP,A),ICAFSGR(CXEP,FSXEP,TC));
 
 * Other Settings
 * electricity sector
-    AFX('AELEC',RD) = NO;
-    AFLEO('AELEC') = NO;
-    AFX('AELEC',RD)$EFX(TT,TC) = YES;
-    AFLEO('AELEC')$EFX(TT,TC) = YES;
+*!    AFX('AELEC',RD) = NO;
+*!    AFLEO('AELEC') = NO;
+*!    AFX('AELEC',RD)$EFX(TT,TC) = YES;
+*!    AFLEO('AELEC')$EFX(TT,TC) = YES;
 
 *    AFX('AELEC',RD) = YES;
 *    AFLEO('AELEC') = YES;
 
 
-    AFXGR('aelec','NAT',XC,TC)$EFX(TT,TC) = QFEGY_GR(RUN,TC)- 1;
+*!    AFXGR('aelec','NAT',XC,TC)$EFX(TT,TC) = QFEGY_GR(RUN,TC)- 1;
 *    AFXGR('aelec','NAT',XC,TC) = QFEGY_GR(RUN,TC)- 1;
 
 *    WFDIST.FX('fegy','aelec','nat') = 1;

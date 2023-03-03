@@ -1,1 +1,1 @@
-.\GHATIM\Gams_WrkTI\RUNTIMES.CMD C:\Models\GHATIMGE\                   BASE                Gams_WrkTI
+.\KENTIM\Gams_WrkTI\RUNTIMES.CMD C:\Models\KENTIMGE\                   REF                 Gams_WrkTI
