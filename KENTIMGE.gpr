@@ -45,12 +45,6 @@ Order=1,2,3,4,5,6
 Decim=7
 PlaneRownr=-1
 
-[RP:2TIMESREPORT]
-1=
-
-[RP:2TIMESSUBANNUALREPORT]
-1=
-
 [GDXDISP: A Set 1]
 PlaneDim=0
 RowDim=1
@@ -116,11 +110,11 @@ PlaneRownr=-1
 
 [GDXDISP: FLOW_IN_FSFuels Par 3]
 PlaneDim=0
-RowDim=3
+RowDim=2
 Squeeze=1
 SqTrail0=0
 Order=1,2,3
-Decim=7
+Decim=0
 PlaneRownr=-1
 
 [GDXDISP: MAC Set 2]
@@ -131,9 +125,6 @@ SqTrail0=0
 Order=1,2
 Decim=7
 PlaneRownr=-1
-
-[RP:KENTIMGE]
-1=r=cge\model, gdx = TestKENTIMGE
 
 [GDXDISP: mCOMC Set 2]
 PlaneDim=0
@@ -198,8 +189,648 @@ Order=1,2
 Decim=7
 PlaneRownr=-1
 
+[GDXDISP: QF0 Par 3]
+PlaneDim=0
+RowDim=2
+Squeeze=1
+SqTrail0=0
+Order=2,3,1
+Decim=7
+PlaneRownr=-1
+
+[GDXDISP: TA Var 2]
+PlaneDim=0
+RowDim=2
+Squeeze=1
+SqTrail0=0
+Order=1,2,3
+Decim=7
+PlaneRownr=-1
+
+[GDXDISP: TAPS Var 0]
+PlaneDim=0
+RowDim=0
+Squeeze=1
+SqTrail0=0
+Order=1
+Decim=7
+PlaneRownr=-1
+
+[GDXDISP: PRCH Set 1]
+PlaneDim=0
+RowDim=1
+Squeeze=1
+SqTrail0=0
+Order=1
+Decim=7
+PlaneRownr=-1
+
+[GDXDISP: C Set 1]
+PlaneDim=0
+RowDim=1
+Squeeze=1
+SqTrail0=0
+Order=1
+Decim=7
+PlaneRownr=-1
+
+[GDXDISP: IADJ Var 1]
+PlaneDim=0
+RowDim=1
+Squeeze=1
+SqTrail0=0
+Order=1,2
+Decim=7
+PlaneRownr=-1
+
+[GDXDISP: ica Par 3]
+PlaneDim=0
+RowDim=3
+Squeeze=1
+SqTrail0=0
+Order=1,2,3
+Decim=7
+PlaneRownr=-1
+
+[RP:2INITIALIZE]
+1=
+
+[GDXDISP: ICAX Par 6]
+PlaneDim=0
+RowDim=6
+Squeeze=1
+SqTrail0=0
+Order=1,2,3,4,5,6
+Decim=7
+PlaneRownr=-1
+
+[GDXDISP: QH Var 2]
+PlaneDim=1
+RowDim=1
+Squeeze=1
+SqTrail0=0
+Order=3,1,2
+Decim=2
+PlaneRownr=-1
+
+[GDXDISP: PQ Var 1]
+PlaneDim=0
+RowDim=1
+Squeeze=1
+SqTrail0=0
+Order=1,2
+Decim=7
+PlaneRownr=-1
+
+[GDXDISP: PQX Par 3]
+PlaneDim=0
+RowDim=3
+Squeeze=1
+SqTrail0=0
+Order=1,2,3
+Decim=7
+PlaneRownr=-1
+
+[GDXDISP: YEARVALT Par 1]
+PlaneDim=0
+RowDim=1
+Squeeze=1
+SqTrail0=0
+Order=1
+Decim=7
+PlaneRownr=-1
+
+[GDXDISP: YI Var 1]
+PlaneDim=0
+RowDim=1
+Squeeze=1
+SqTrail0=0
+Order=1,2
+Decim=7
+PlaneRownr=-1
+
+[RP:MERGERUNS]
+1=
+
+[GDXDISP: YIX Par 3]
+PlaneDim=0
+RowDim=3
+Squeeze=1
+SqTrail0=0
+Order=1,2,3
+Decim=7
+PlaneRownr=-1
+
+[GDXDISP: U Alias 1]
+PlaneDim=0
+RowDim=1
+Squeeze=1
+SqTrail0=0
+Order=1
+Decim=7
+PlaneRownr=-1
+
+[GDXDISP: UC_ACT Par 6]
+PlaneDim=0
+RowDim=6
+Squeeze=1
+SqTrail0=0
+Order=1,2,3,4,5,6
+Decim=7
+PlaneRownr=-1
+
+[GDXDISP: UC_CAP Par 5]
+PlaneDim=0
+RowDim=5
+Squeeze=1
+SqTrail0=0
+Order=1,2,3,4,5
+Decim=7
+PlaneRownr=-1
+
+[GDXDISP: T Set 1]
+PlaneDim=0
+RowDim=1
+Squeeze=1
+SqTrail0=0
+Order=1
+Decim=7
+PlaneRownr=-1
+
+[RP:2ENERGYCHECKSINIT]
+1=
+
+[GDXDISP: TAPSX Par 3]
+PlaneDim=0
+RowDim=3
+Squeeze=1
+SqTrail0=0
+Order=1,2,3
+Decim=7
+PlaneRownr=-1
+
+[GDXDISP: E Par 1]
+PlaneDim=0
+RowDim=1
+Squeeze=1
+SqTrail0=0
+Order=1
+Decim=7
+PlaneRownr=-1
+
+[GDXDISP: ELASCA Par 1]
+PlaneDim=0
+RowDim=1
+Squeeze=1
+SqTrail0=0
+Order=1
+Decim=7
+PlaneRownr=-1
+
+[GDXDISP: ELC_FLOW Par 2]
+PlaneDim=0
+RowDim=2
+Squeeze=1
+SqTrail0=0
+Order=1,2
+Decim=7
+PlaneRownr=-1
+
+[GDXDISP: FS Set 1]
+PlaneDim=0
+RowDim=1
+Squeeze=1
+SqTrail0=0
+Order=1
+Decim=7
+PlaneRownr=-1
+
+[GDXDISP: FSeMOD Set 1]
+PlaneDim=0
+RowDim=1
+Squeeze=1
+SqTrail0=0
+Order=1
+Decim=7
+PlaneRownr=-1
+
+[GDXDISP: FSeMODNOELEC Set 1]
+PlaneDim=0
+RowDim=1
+Squeeze=1
+SqTrail0=0
+Order=1
+Decim=7
+PlaneRownr=-1
+
+[GDXDISP: MPRCFS Set 2]
+PlaneDim=0
+RowDim=1
+Squeeze=1
+SqTrail0=0
+Order=1,2
+Decim=7
+PlaneRownr=-1
+
+[GDXDISP: H Set 1]
+PlaneDim=0
+RowDim=1
+Squeeze=1
+SqTrail0=0
+Order=1
+Decim=7
+PlaneRownr=-1
+
+[GDXDISP: EFVAL Par 0]
+PlaneDim=0
+RowDim=0
+Squeeze=1
+SqTrail0=0
+Order=
+Decim=7
+PlaneRownr=-1
+
+[GDXDISP: EFX Set 2]
+PlaneDim=0
+RowDim=2
+Squeeze=1
+SqTrail0=0
+Order=1,2
+Decim=7
+PlaneRownr=-1
+
+[RP:2VARINIT]
+1=
+
+[GDXDISP: DATAYEAR Set 1]
+PlaneDim=0
+RowDim=1
+Squeeze=1
+SqTrail0=0
+Order=1
+Decim=7
+PlaneRownr=-1
+
+[GDXDISP: DTAX Set 1]
+PlaneDim=0
+RowDim=1
+Squeeze=1
+SqTrail0=0
+Order=1
+Decim=7
+PlaneRownr=-1
+
+[GDXDISP: DTINS0 Par 0]
+PlaneDim=0
+RowDim=0
+Squeeze=1
+SqTrail0=0
+Order=
+Decim=7
+PlaneRownr=-1
+
+[GDXDISP: DTAXGR Par 2]
+PlaneDim=0
+RowDim=2
+Squeeze=1
+SqTrail0=0
+Order=1,2
+Decim=7
+PlaneRownr=-1
+
+[GDXDISP: MILESTONYR Set 1]
+PlaneDim=0
+RowDim=1
+Squeeze=1
+SqTrail0=0
+Order=1
+Decim=7
+PlaneRownr=-1
+
+[GDXDISP: MISCAC Set 1]
+PlaneDim=0
+RowDim=1
+Squeeze=1
+SqTrail0=0
+Order=1
+Decim=7
+PlaneRownr=-1
+
+[GDXDISP: QAX Par 4]
+PlaneDim=0
+RowDim=4
+Squeeze=1
+SqTrail0=0
+Order=1,2,3,4
+Decim=7
+PlaneRownr=-1
+
+[GDXDISP: MISCPROJ Par 3]
+PlaneDim=0
+RowDim=3
+Squeeze=1
+SqTrail0=0
+Order=1,2,3
+Decim=7
+PlaneRownr=-1
+
+[RP:2PROJECTION]
+1=
+
+[RP:2CLOSURES]
+1=
+
+[GDXDISP: X Set 1]
+PlaneDim=0
+RowDim=1
+Squeeze=1
+SqTrail0=0
+Order=1
+Decim=7
+PlaneRownr=-1
+
+[GDXDISP: XC Set 1]
+PlaneDim=0
+RowDim=1
+Squeeze=1
+SqTrail0=0
+Order=1
+Decim=7
+PlaneRownr=-1
+
+[RP:2RESULTS]
+1=
+
+[GDXDISP: TC Set 1]
+PlaneDim=0
+RowDim=1
+Squeeze=1
+SqTrail0=0
+Order=1
+Decim=7
+PlaneRownr=-1
+
+[GDXDISP: EIntensity Par 6]
+PlaneDim=0
+RowDim=6
+Squeeze=1
+SqTrail0=0
+Order=1,2,3,4,5,6
+Decim=7
+PlaneRownr=-1
+
+[GDXDISP: EINVCOST Par 2]
+PlaneDim=0
+RowDim=2
+Squeeze=1
+SqTrail0=0
+Order=1,2
+Decim=7
+PlaneRownr=-1
+
+[GDXDISP: EINVQINV Par 3]
+PlaneDim=1
+RowDim=2
+Squeeze=1
+SqTrail0=0
+Order=3,1,2
+Decim=6
+PlaneRownr=-1
+
+[GDXDISP: natdrate Par 0]
+PlaneDim=0
+RowDim=0
+Squeeze=1
+SqTrail0=0
+Order=
+Decim=7
+PlaneRownr=-1
+
+[GDXDISP: NGFCF Par 0]
+PlaneDim=0
+RowDim=0
+Squeeze=1
+SqTrail0=0
+Order=
+Decim=7
+PlaneRownr=-1
+
+[GDXDISP: BalanceCheck Par 4]
+PlaneDim=0
+RowDim=4
+Squeeze=1
+SqTrail0=0
+Order=1,2,3,4
+Decim=7
+PlaneRownr=-1
+
+[GDXDISP: B Par 1]
+PlaneDim=0
+RowDim=1
+Squeeze=1
+SqTrail0=0
+Order=1
+Decim=7
+PlaneRownr=-1
+
+[GDXDISP: NGFCFX Par 3]
+PlaneDim=1
+RowDim=2
+Squeeze=1
+SqTrail0=0
+Order=3,1,2
+Decim=7
+PlaneRownr=-1
+
+[RP:2CAPITAL]
+1=
+
+[RP:2SIMULATION]
+1=
+
+[GDXDISP: REPORT_RUN Par 4]
+PlaneDim=0
+RowDim=4
+Squeeze=1
+SqTrail0=0
+Order=1,2,3,4
+Decim=7
+PlaneRownr=-1
+
+[GDXDISP: PRCPower Set 1]
+PlaneDim=0
+RowDim=1
+Squeeze=1
+SqTrail0=0
+Order=1
+Decim=7
+PlaneRownr=-1
+
+[GDXDISP: WAD Par 3]
+PlaneDim=0
+RowDim=3
+Squeeze=1
+SqTrail0=0
+Order=1,2,3
+Decim=7
+PlaneRownr=-1
+
+[GDXDISP: WF Var 1]
+PlaneDim=0
+RowDim=1
+Squeeze=1
+SqTrail0=0
+Order=1,2
+Decim=7
+PlaneRownr=-1
+
+[GDXDISP: WFDEF Equ 1]
+PlaneDim=0
+RowDim=1
+Squeeze=1
+SqTrail0=0
+Order=1,2
+Decim=7
+PlaneRownr=-1
+
+[GDXDISP: WFDIST Var 3]
+PlaneDim=0
+RowDim=3
+Squeeze=1
+SqTrail0=0
+Order=1,2,3,4
+Decim=7
+PlaneRownr=-1
+
+[GDXDISP: WFDISTX Par 6]
+PlaneDim=1
+RowDim=4
+Squeeze=1
+SqTrail0=0
+Order=1,2,3,4,6,5
+Decim=1
+PlaneRownr=5
+PlaneFilter1=fegy
+
+[GDXDISP: PQX Par 4]
+PlaneDim=0
+RowDim=3
+Squeeze=1
+SqTrail0=0
+Order=1,2,4,3
+Decim=4
+PlaneRownr=-1
+
+[GDXDISP: EBCHECK Par 7]
+PlaneDim=1
+RowDim=5
+Squeeze=1
+SqTrail0=0
+Order=3,2,4,6,1,7,5
+Decim=1
+PlaneRownr=-1
+
+[GDXDISP: AFLEO Set 1]
+PlaneDim=0
+RowDim=1
+Squeeze=1
+SqTrail0=0
+Order=1
+Decim=7
+PlaneRownr=-1
+
+[GDXDISP: AFX Set 2]
+PlaneDim=0
+RowDim=2
+Squeeze=1
+SqTrail0=0
+Order=1,2
+Decim=7
+PlaneRownr=-1
+
+[GDXDISP: AFXGR Par 4]
+PlaneDim=0
+RowDim=4
+Squeeze=1
+SqTrail0=0
+Order=1,2,3,4
+Decim=7
+PlaneRownr=-1
+
+[RP:2TIMESSUBANNUALREPORT]
+1=
+
 [RP:2SIMULATION_LOOP]
 1=
+
+[GDXDISP: MPRCSubSector Set 3]
+PlaneDim=0
+RowDim=3
+Squeeze=1
+SqTrail0=0
+Order=1,2,3
+Decim=7
+PlaneRownr=-1
+
+[RP:2ENERGYINIT]
+1=
+
+[GDXDISP: MPRCSubsubSector Set 4]
+PlaneDim=0
+RowDim=4
+Squeeze=1
+SqTrail0=0
+Order=1,2,3,4
+Decim=7
+PlaneRownr=-1
+
+[GDXDISP: AC Set 1]
+PlaneDim=0
+RowDim=1
+Squeeze=1
+SqTrail0=0
+Order=1
+Decim=7
+PlaneRownr=-1
+
+[GDXDISP: ACTFACSHR Par 2]
+PlaneDim=0
+RowDim=2
+Squeeze=1
+SqTrail0=0
+Order=1,2
+Decim=7
+PlaneRownr=-1
+
+[GDXDISP: ACMACTAX Set 1]
+PlaneDim=0
+RowDim=1
+Squeeze=1
+SqTrail0=0
+Order=1
+Decim=7
+PlaneRownr=-1
+
+[GDXDISP: CST_ACTC Par 5]
+PlaneDim=0
+RowDim=5
+Squeeze=1
+SqTrail0=0
+Order=1,2,3,4,5
+Decim=7
+PlaneRownr=-1
+
+[RP:2TIMESREPORT]
+1=
+
+[RP:KENTIMGE]
+1=r=cge\model, gdx = TestKENTIMREF
+2=r=cge\model, gdx = TestKENTIMGE3
+3=r=cge\model, gdx = TestKENTIMGE2
+4=r=cge\model, gdx = TestKENTIMGE
+
+[MRUFILES]
+1=C:\Models\SATIMGE\Reference.gdx
 
 [OPENWINDOW_1]
 FILE0=C:\Models\KENTIMGE\TestKENTIMGE.gdx
@@ -211,18 +842,67 @@ HEIGHT=803
 WIDTH=1122
 
 [OPENWINDOW_2]
-FILE0=C:\Models\KENTIMGE\CGE\includes\2simulation.inc
-FILE1=C:\Models\KENTIMGE\cge\includes\2simulation_loop.inc
-FILE2=C:\Models\KENTIMGE\CGE\model.gdx
-FILE3=C:\Models\KENTIMGE\KENTIM\Gams_WrkTI\gamssave\BASE.gdx
-FILE4=C:\Models\KENTIMGE\KENTIM\includes\2TIMESReport.inc
-FILE5=C:\Models\KENTIMGE\KENTIM\includes\2TIMESSubAnnualReport.inc
-FILE6=C:\Models\KENTIMGE\KENTIMGE.gms
-FILE7=C:\Models\KENTIMGE\KENTIMGE.lst
-FILE8=C:\Models\KENTIMGE\TestKENTIMGE.gdx
-FILE9=C:\Models\KENTIMGE\CGE\includes\2simulation.inc
+FILE0=C:\Models\KENTIMGE\CGE\model.gdx
+FILE1=C:\Models\KENTIMGE\CGE\model.gdx
 MAXIM=0
-TOP=4
-LEFT=47
+TOP=54
+LEFT=1417
+HEIGHT=1135
+WIDTH=1126
+
+[OPENWINDOW_3]
+FILE0=C:\Models\GHATIMGE\GHATIM_Reference2.gdx
+FILE1=C:\Models\KENTIMGE\TestKENTIMGE.gdx
+FILE2=C:\Models\KENTIMGE\TestKENTIMGE2.gdx
+FILE3=C:\Models\KENTIMGE\TestKENTIMGE3.gdx
+FILE4=C:\Models\SATIMGE\Ref3IterTest.gdx
+FILE5=C:\Models\KENTIMGE\TestKENTIMGE3.gdx
+MAXIM=0
+TOP=17
+LEFT=1362
+HEIGHT=1252
+WIDTH=1187
+
+[OPENWINDOW_4]
+FILE0=C:\Models\KENTIMGE\CGE\includes\2capital.inc
+FILE1=C:\Models\KENTIMGE\cge\includes\2closures.inc
+FILE2=C:\Models\KENTIMGE\cge\includes\2energychecksinit.inc
+FILE3=C:\Models\KENTIMGE\cge\includes\2energyinit.inc
+FILE4=C:\Models\KENTIMGE\cge\includes\2initialize.inc
+FILE5=C:\Models\KENTIMGE\CGE\includes\2projection.inc
+FILE6=C:\Models\KENTIMGE\cge\includes\2results.inc
+FILE7=C:\Models\KENTIMGE\cge\includes\2simulation.inc
+FILE8=C:\Models\KENTIMGE\cge\includes\2simulation_loop.inc
+FILE9=C:\Models\KENTIMGE\cge\includes\2varinit.inc
+FILE10=C:\Models\KENTIMGE\CGE\model.gdx
+FILE11=C:\Models\KENTIMGE\KENTIM\Gams_WrkTI\gamssave\BASE.gdx
+FILE12=C:\Models\KENTIMGE\KENTIM\includes\2TIMESReport.inc
+FILE13=C:\Models\KENTIMGE\KENTIM\includes\2TIMESSubAnnualReport.inc
+FILE14=C:\Models\KENTIMGE\KENTIMGE.gms
+FILE15=C:\Models\KENTIMGE\KENTIMGE.lst
+FILE16=C:\Models\KENTIMGE\MergeRuns.gms
+FILE17=C:\Models\KENTIMGE\TestKENTIMGE.gdx
+FILE18=C:\Models\KENTIMGE\KENTIMGE.lst
+MAXIM=0
+TOP=12
+LEFT=50
 HEIGHT=1009
 WIDTH=1297
+
+[GDXDISP: OB_ACT Par 4]
+PlaneDim=0
+RowDim=3
+Squeeze=1
+SqTrail0=0
+Order=1,2,3,4
+Decim=1
+PlaneRownr=-1
+
+[GDXDISP: F_OUT Par 6]
+PlaneDim=0
+RowDim=6
+Squeeze=1
+SqTrail0=0
+Order=1,2,3,4,5,6
+Decim=7
+PlaneRownr=-1

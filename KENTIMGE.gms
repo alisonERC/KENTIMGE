@@ -121,6 +121,9 @@ SETS
   MPRCSubsubSector(PRC,Sector,SubSector,SubSubSector)  Map for PRC to subsubsectors
   PRCPower(PRC)                  Technology set used to compute elc price
   PRCBulkPower(PRC)              Technology set used to compute bulk elc price (up to ETRANS)
+  PRCPowerDiesel(PRC)            Technology set for diesel generators
+  PRCPowerNGas(PRC)              Technology set for gas generators
+  PRCPOWERHFO(PRC)               Technology set for HFO
 * Emissions sets
   CO2SET(COM)                    Sectoral emissions
 
@@ -429,6 +432,12 @@ PRCBulkPower(PRC)$MPRCSubSector(PRC,'Power','AutoGen-Chemical') = no;
 PRCBulkPower(PRC)$MPRCSubSector(PRC,'Power','AutoGen-EnergySupply') = no;
 PRCBulkPower(PRC)$MPRCSubSubSector(PRC,'Power','EBattery','Ebattery_Dist') = no;
 PRCBulkPower(PRC)$MPRCSubSubSector(PRC,'Power','EPV','EPV_Dist') = no;
+
+PRCPowerDiesel(PRC)$MPRCSubsubSector(PRC,'Power','EOil','EDiesel') = yes;
+PRCPOWERHFO(PRC)$MPRCSubsubSector(PRC,'Power','EOil','EHFO') = yes;
+PRCPowerNGas(PRC)$MPRCSubSector(PRC,'Power','EGas') = yes;
+
+
 
 FSGDP(FS) = yes;
 

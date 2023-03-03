@@ -1,4 +1,4 @@
-* This DDS contains Rule-based constraints that occur in scenario(s) 'BASE','BACKSTOP','CO2CAPXX','PWR_LAB','GASMIT','DMD_ALL' for region REGION1
+* This DDS contains Rule-based constraints that occur in scenario(s) 'BASE','BACKSTOP','PWR_LAB','FLEXIBLEGAS','CO2CAP1000','DMD_ALL' for region REGION1
 SET UC_N /
   'UC_PV_NCAP'       'Bound on new capacity for PV through transmission '
   'UC_WIND_NCAP'     'Bound on new capacity for wind                    '
