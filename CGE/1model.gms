@@ -137,7 +137,7 @@ $INCLUDE %countrydata%
  AELASTAB(C,'SIGMAT')$(CEN(C) OR (CE(C) AND CDN(C))) = 0;
  AELASTAB(C,'SIGMAQ')$(CMN(C) OR (CM(C) AND CDN(C))) = 0;
 
- DELASTAB(ARD,'PRODE')$(NOT SAM('TOTAL',ARD)) = 0;
+* DELASTAB(ARD,'PRODE')$(NOT SAM('TOTAL',ARD)) = 0;
 
  AELASTAB(C,'OUTAGG')$(NOT SUM(ARD, SAM(ARD,C)))     = 0;
 
@@ -183,8 +183,10 @@ PARAMETERS
  alphava2(F,A,RD)        lower level factor nesting parameter
  alphaa2(A)              shift parameter on ces activity output aggregation function
  alphaca(A)              shift parameter on ces activity output disaggregation function
- beta1                   capital mobility parameter by type                      / 2.00 /
- beta2                   capital mobility by sector                              / 2.00 /
+ beta1                   capital mobility parameter by type                      / 0.75 /
+*2.00 /
+ beta2(F)                   capital mobility by sector
+*/ 2.00 /
  betah(A,H)              marg shr of hhd cons on home com c from act a
  betam(C,H)              marg share of hhd cons on marketed commodity c
  betam0(C,H)             marg share of hhd cons on marketed commodity c
@@ -238,6 +240,7 @@ PARAMETERS
  rhoca(A)                CET activity disaggregation function exponent
  elasva(A,RD)            CES elasticity of substitution in production
  pwebar(C,RW)            world price of exports
+ pwmbar(C,RW)            world price of imports
  shif(INS,F)             share of dom. inst'on i in income of factor f
  shii(INS,INSP)          share of inst'on i in post-tax post-sav income of inst ip
  supernum(H)             LES supernumerary income
@@ -403,6 +406,8 @@ PARAMETERS
  GDPMP0                  nominal GDP at market prices
 ;
 
+*CA set within category capital mobility
+beta2(fcap)=2;
 *Price block --------------------------------------------------
 IF(AGRIPROD EQ 0,
  PSUP(C)              = 1;
@@ -428,7 +433,7 @@ ELSE
 
 *Activity quantity = payment to activity divided by activity price
 *QA covers both on-farm consumption and marketed output output GROSS of tax
- QAR0(A,RD)        =  SUM(ARD$MARD(ARD,A,RD), SAM('TOTAL',ARD))/PAR0(A,RD) ;
+ QAR0(A,RD)$PAR0(A,RD)        =  SUM(ARD$MARD(ARD,A,RD), SAM('TOTAL',ARD))/PAR0(A,RD) ;
  QA0(A)            =  SUM(RD, QAR0(A,RD));
 
 *SR If an activity is produced in only one region, set ACES2 to "no"
@@ -450,7 +455,8 @@ ELSE
 
 *Output quantity = value received by producers divided by producer price
 *QX covers only marketed output
- QX0(C)$SUM(ARD, SAM(ARD,C)) = SUM(ARD, SAM(ARD,C)) / PX0(C);
+* QX0(C)$SUM(ARD, SAM(ARD,C)) = SUM(ARD, SAM(ARD,C)) / PX0(C);
+ QX0(C)$PX0(C) = SUM(ARD, SAM(ARD,C)) / PX0(C);
 
 *Export quantity = export revenue received by producers
 *(ie. minus tax and transactions cost) divided by export price.
@@ -462,10 +468,12 @@ PARAMETER TRESHR(C,RW);
 *parameter sherwin(c,rw);
 *sherwin(c,rw) =  SUM(CTE, SAM(CTE,C))*TRESHR(C,RW);
 
- QE0(C,RW)$CERW(C,RW) = (SAM(C,'ROW')*REGEXP(C,RW) - TAXPAR('EXPTAX',C)*REGETX(C,RW) - SUM(CTE, SAM(CTE,C))*TRESHR(C,RW)  )/PE0(C,RW);
+* QE0(C,RW)$CERW(C,RW) = (SAM(C,'ROW')*REGEXP(C,RW) - TAXPAR('EXPTAX',C)*REGETX(C,RW) - SUM(CTE, SAM(CTE,C))*TRESHR(C,RW)  )/PE0(C,RW);
+ QE0(C,RW)$(CERW(C,RW) AND PE0(C,RW)) = (SAM(C,'ROW')*REGEXP(C,RW) - TAXPAR('EXPTAX',C)*REGETX(C,RW) - SUM(CTE, SAM(CTE,C))*TRESHR(C,RW)  )/PE0(C,RW);
 
 *RoW export price = RoW export payment (in for curr) / export qnty
  PWE0(C,RW)$CERW(C,RW)  = (SAM(C,'ROW')*REGEXP(C,RW)/EXR0) / QE0(C,RW);
+ PWE0(C,RW)$(CERW(C,RW) AND PE0(C,RW))  = (SAM(C,'ROW')*REGEXP(C,RW)/EXR0) / QE0(C,RW);
  pwebar(C,RW) = PWE0(C,RW);
  te0(C,RW)$(SAM(C,'ROW')*REGEXP(C,RW)) = (TAXPAR('EXPTAX',C)*REGETX(C,RW))/(SAM(C,'ROW')*REGEXP(C,RW));
  te(C,RW)               =  te0(C,RW);
@@ -509,7 +517,7 @@ PARAMETER TRMSHR(C,RW);
  TQ0(C)$QQ0(C) = TAXPAR('COMTAX',C)/(PQ0(C)*QQ0(C)) ;
  TQADJ0 = 0;
  TQPS0  = 0;
- TQelec0('celec')  = 0;
+ TQelec0(C)  = 0;
  tq01(C)$TQ0(C) = 1;
  tq01('CELEC') = 0;
  tqbar(C) = TQ0(C);
@@ -558,10 +566,10 @@ PARAMETER TRMSHR(C,RW);
   =  QXAC0(A,C)/(QA0(A)- SUM(H,QHA0(A,H))) ;
 
 *Intermediate input coefficient = input use / output quantity
- QINTA0(A,RD) = SUM(C$PQ0(C), SUM(ARD$MARD(ARD,A,RD), SAM(C,ARD))  / PQ0(C)) ;
+* QINTA0(A,RD) = SUM(C$PQ0(C), SUM(ARD$MARD(ARD,A,RD), SAM(C,ARD))  / PQ0(C)) ;
 *bm this is commented out to keep units of input in their raw format, given that energy is now in physical units
 *bm we cannot add them or scale them relative to other inputs - it also makes linking to energy model more intuitive
-* QINTA0(A,RD) = QAR0(A,RD);
+ QINTA0(A,RD) = QAR0(A,RD);
 
 
 *fh incl energy - utax ---------------------------------------------------------
@@ -577,7 +585,7 @@ PARAMETER
 *fh tsitica links
 SCALAR
 *fh was initially 0
- alphawfdist range for value of capital parameter /0.2/;
+ alphawfdist range for value of capital parameter /0/;
 *-------------------------------------------------------------------------------
 
 *CA specify base level of intermediate input use
@@ -677,7 +685,7 @@ SET
 *Defining employment for aggregate factors in factor nesting
  QFS0(F)      = SUM((A,RD), QF0(F,A,RD));
 
-* QFS_BAR(F)   = QFS0(F);
+ QFS_BAR(F)   = QFS0(F);
 *Activity-specific wage is activity labor payment over employment
  WFA(F,A,RD)$QF0(F,A,RD) = SUM(ARD$MARD(ARD,A,RD),SAM(F,ARD))/QF0(F,A,RD);
 *Activity-specific wages for aggregate factors in factor nesting
@@ -1339,7 +1347,7 @@ EQUATIONS
  TINSDEF(INS)            direct tax rate for inst ins
  MPSDEF(INS)             marg prop to save for inst ins
  TADEF(A,RD)             indirect tax rate for activity a rd
- TQDEF(C)                sales tax rate for activity c
+ TQDEF(C)                sales tax rate for commodity c
  SAVINVBAL               savings-investment balance
  TABSEQ                  total absorption
  INVABEQ                 investment share in absorption
@@ -1480,7 +1488,9 @@ alphavb(A,RD)=alphavb0(A,RD);
 
 *JT Nonsense equation
 * PADEF2(A,RD)$(NOT ACES2(A) AND PAR0(A,RD)).. PAR(A,RD)/PAR0(A,RD) =E= PA(A)/PA0(A);
- PADEF2(A,RD)$(NOT ACES2(A) AND PAR0(A,RD)).. SUM(RDP, PAR(A,RDP)*QAR(A,RDP)) =E= PA(A)*QA(A);
+* PADEF2(A,RD)$(NOT ACES2(A) AND PAR0(A,RD)).. SUM(RDP, PAR(A,RDP)*QAR(A,RDP)) =E= PA(A)*QA(A);
+PADEF2(A,RD)$(NOT ACES2(A) AND QAR0(A,RD))..
+   PAR(A,RD)*QAR(A,RD) =E= PA(A)*QA(A) - SUM(RDP$(NOT RD(RDP)), PAR(A,RDP)*QAR(A,RDP));
 
 *CES REGIONAL ACTIVITY AGGREGATION FUNCTION
  QACES(A)$(ACES2(A) AND QA0(A))..  QA(A) =E=
@@ -1606,7 +1616,8 @@ betaca(A,C)=1;
 
 *System constraint block
 
- FACEQUIL(F)$QFS0(F).. SUM((A,RD), QF(F,A,RD)) =E= QFS(F);
+* FACEQUIL(F)$QFS0(F).. SUM((A,RD), QF(F,A,RD)) =E= QFS(F);
+ FACEQUIL(F)$QFS0(F).. SUM((A,RD), QF(F,A,RD)) =E= QFS(F)+QFS_FOR(F);
 
 *fh tsitica links
  QFDEF('fcap',A,RD)$QF0('fcap',A,RD).. QF('fcap',A,RD) =E= ALPHAQF*qfbar('fcap',A,RD);
@@ -1685,7 +1696,8 @@ MODEL STANDCGE  standard CGE model /
  DPIDEF
 *Production and trade block
  QADEF.QA
- PADEF2.PAR
+* PADEF2.PAR
+ PADEF2.QAR
  QACES
  QACESFOC
  LEOAGGINT.QINTA
@@ -1721,7 +1733,7 @@ MODEL STANDCGE  standard CGE model /
  YGDEF.YG
  GOVDEM.QG
  GOVBAL
- INVDEM
+ INVDEM.QINV
 *System-constraint block
  FACEQUIL
  LABSUP
@@ -1739,12 +1751,14 @@ MODEL STANDCGE  standard CGE model /
 *utax code
  PQIDEF.PQI
  PQHDEF.PQH
+* EXPRESID1
  EXPRESID2.QE
  YG_DTAXDEF
  YG_ITAXDEF
  YG_NTAXDEF
  ITAXEQ
  GDPMPDEF
+*QFMAX
 *fh tsitica links
  QFDEF
  QFS_FORDEF

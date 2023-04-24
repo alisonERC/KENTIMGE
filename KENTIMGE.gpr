@@ -154,16 +154,16 @@ Decim=7
 PlaneRownr=-1
 
 [GDXDISP: QFX Par 6]
-PlaneDim=4
-RowDim=1
+PlaneDim=3
+RowDim=3
 Squeeze=1
 SqTrail0=0
-Order=4,3,1,6,5,2
+Order=4,3,6,2,1,5
 Decim=0
-PlaneRownr=17
+PlaneRownr=2
 PlaneFilter1=base
 PlaneFilter2=nat
-PlaneFilter3=fegy
+PlaneFilter3=2050
 PlaneFilter4=2050
 
 [GDXDISP: UC_N Set 1]
@@ -855,7 +855,7 @@ PlaneRownr=-1
 
 [GDXDISP: WALRASX Par 3]
 PlaneDim=0
-RowDim=3
+RowDim=2
 Squeeze=1
 SqTrail0=0
 Order=1,2,3
@@ -1889,41 +1889,65 @@ PlaneRownr=-1
 [RP:UNTITLED_1]
 1=
 
-[RP:KENTIMGE]
-1=r=cge\model, gdx = Test_NDCFlexGaS_FP
-2=r=cge\model, gdx = Test_NDCBigGaS_FP
-3=r=cge\model, gdx = Test_REFBigGaS_FP
-4=r=cge\model, gdx = Test_REFFlexGaS_FP
-5=r=cge\model, gdx = Test_Batch
-6=r=cge\model, gdx = Test_NDCFlexGas2
-7=r=cge\model, gdx = Test_REFFlexGas2060
-8=r=cge\model, gdx = Test_REFFlexGas
-9=r=cge\model, gdx = Test_REFBigGas
-10=r=cge\model, gdx = Test_NDCBigGas
-11=r=cge\model, gdx = Test_NDCFlexGas
-12=r=cge\model, gdx = TestKENTIMREF
-13=r=cge\model, gdx = TestKENTIMGE3
-14=r=cge\model, gdx = TestKENTIMGE2
-15=r=cge\model, gdx = TestKENTIMGE
-
-[MRUFILES]
-1=C:\Models\KENTIMGE\Untitled_1.gms
-2=C:\Models\KENTIMGE\merged.gdx
-3=C:\Models\KENTIMGE\Test_REFBigGaS_FP.gdx
-4=C:\Models\KENTIMGE\Test_NDCFlexGaS_FP.gdx
-5=C:\Models\KENTIMGE\KENTIMGE.lst
-6=C:\Users\HFaaiqa\Documents\2.Projects\TSITICA\Ghana\Results\Updated_used\merged.gdx
-7=C:\Models\KENTIMGE\Test_Batch.gdx
-
 [OPENWINDOW_1]
-FILE0=C:\Models\KENTIMGE\CGE\includes\2simulation.inc
-FILE1=C:\Models\KENTIMGE\cge\includes\2simulation_loop.inc
-FILE2=C:\Models\KENTIMGE\KENTIMGE.gms
-FILE3=C:\Models\KENTIMGE\Test_NDCBigGaS_FP.gdx
-FILE4=C:\Models\KENTIMGE\Test_REFFlexGaS_FP.gdx
-FILE5=C:\Models\KENTIMGE\Test_REFFlexGaS_FP.gdx
 MAXIM=0
 TOP=0
 LEFT=0
 HEIGHT=760
 WIDTH=1356
+
+[GDXDISP: koption Par 0]
+PlaneDim=0
+RowDim=0
+Squeeze=1
+SqTrail0=0
+Order=
+Decim=7
+PlaneRownr=-1
+
+[GDXDISP: tq01 Par 1]
+PlaneDim=0
+RowDim=1
+Squeeze=1
+SqTrail0=0
+Order=1
+Decim=7
+PlaneRownr=-1
+
+[GDXDISP: deltava Par 3]
+PlaneDim=0
+RowDim=3
+Squeeze=1
+SqTrail0=0
+Order=1,2,3
+Decim=7
+PlaneRownr=-1
+
+[RP:KENTIMGE]
+1=r=cge\model, gdx = Test_FlexGas
+2=r=cge\model, gdx = Test_NDCFlexGas
+3=r=cge\model, gdx = Test_NDCFlexGaS_FP
+4=r=cge\model, gdx = Test_NDCBigGaS_FP
+5=r=cge\model, gdx = Test_REFBigGaS_FP
+6=r=cge\model, gdx = Test_REFFlexGaS_FP
+7=r=cge\model, gdx = Test_Batch
+8=r=cge\model, gdx = Test_NDCFlexGas2
+9=r=cge\model, gdx = Test_REFFlexGas2060
+10=r=cge\model, gdx = Test_REFFlexGas
+11=r=cge\model, gdx = Test_REFBigGas
+12=r=cge\model, gdx = Test_NDCBigGas
+13=r=cge\model, gdx = TestKENTIMREF
+14=r=cge\model, gdx = TestKENTIMGE3
+15=r=cge\model, gdx = TestKENTIMGE2
+16=r=cge\model, gdx = TestKENTIMGE
+
+[MRUFILES]
+1=C:\Models\KENTIMGE\Test_NDCFlexGas.gdx
+2=C:\Models\KENTIMGE\Test_FlexGas.gdx
+3=C:\Models\KENTIMGE\KENTIMGE.gms
+4=C:\Models\KENTIMGE\CGE\model.gdx
+5=C:\Models\KENTIMGE\cge\includes\2simulation_loop.inc
+6=C:\Models\KENTIMGE\CGE\includes\2simulation.inc
+7=C:\Models\KENTIMGE\cge\includes\2capital.inc
+8=C:\Models\KENTIMGE\Test_REFFlexGaS_FP.gdx
+9=C:\Models\KENTIMGE\Test_NDCBigGaS_FP.gdx

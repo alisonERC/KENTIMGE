@@ -78,6 +78,8 @@
  betam(C,H) = betam0(C,H);
  debt = debt0;
 
+ pwebar(C,RW) = PWE0(C,RW);
+* pwMbar(C,RW) = PWM0(C,RW);
 *Reset IO coefficients to base values
  inta(A,RD) = inta0(A,RD);
  iva(A,RD) = iva0(A,RD);
@@ -104,7 +106,8 @@
  PQ.LO('CELEC') = -inf;
  PQ.UP('CELEC') = +inf;
 
- tq01(C) = 1;
+ tq01(C)$tq0(c) = 1;
+ tq01('celec')=0;		 
  TQPS.FX = tqps0;
  TQELEC.FX(C) = TQELEC0(C);
 
@@ -123,24 +126,23 @@
 * TVA.L(A,RD)             = TVA0(A,RD);
 * TVAADJ.L                = TVAADJ0;
 * TVAPS.L                 = TVAPS0;
- BETAM(C,H)              = betam0(C,H);
+* BETAM(C,H)              = betam0(C,H);
  
  betaca(A,C)=1;
 
-$ONTEXT
- ETPRICE(TC) = PQ0('CELEC');
+* ETPRICE(TC) = PQ0('CELEC');
  EPRICE(TC,TT)=PQ0('CELEC');
  EINVCOST(RUN,TC) = 0;
  INVCOST(RUN,TC,PRC) = 0;
  BPINV(RUN,TC,TCP,PRC) = 0;
 
+ HCAP(X,TC,TT) = 0;				   
  ICAGR(C,A,TC) = 1;
  ICAFSGR(C,FS,TC) = 1;
  IFAGR(F,A,TC) = 1;
  IFAFSGR(F,FS,TC) = 1;
 
  gammamgr(C,H,TC) = 1;
-$OFFTEXT
 
  deltaq(cm,rw) = deltaq0(cm,rw);
  deltat(cm,rw) = deltat0(cm,rw);
