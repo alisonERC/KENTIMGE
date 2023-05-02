@@ -511,11 +511,16 @@ if(SIM_ESAGE(RUN) eq 1,
 
 $include cge\includes\2simulation_loop.inc
 
+REPORT('OtherEconIndicators','ACTGRP',TC,RUN,'GVA') = SUM(A,QVAX(A,'nat','base',TC,'2050')*PVAX(A,'nat','base',TC,'2050'));
+REPORT('OtherEconIndicators','ACTGRP',TC,RUN,'Employment-n') = QFSX('flab-n','base',TC,'2050');
+REPORT('OtherEconIndicators','ACTGRP',TC,RUN,'Employment-p') = QFSX('flab-p','base',TC,'2050');
+REPORT('OtherEconIndicators','ACTGRP',TC,RUN,'Employment-s') = QFSX('flab-s','base',TC,'2050');
+$ontext
 REPORT('OtherEconIndicators','ACTGRP',TC,RUN,'GVA') = SUM(A,QVAX(A,'nat','base',TC,'2040')*PVAX(A,'nat','base',TC,'2040'));
 REPORT('OtherEconIndicators','ACTGRP',TC,RUN,'Employment-n') = QFSX('flab-n','base',TC,'2040');
 REPORT('OtherEconIndicators','ACTGRP',TC,RUN,'Employment-p') = QFSX('flab-p','base',TC,'2040');
 REPORT('OtherEconIndicators','ACTGRP',TC,RUN,'Employment-s') = QFSX('flab-s','base',TC,'2040');
-
+$offtext
 ELSE
 
 

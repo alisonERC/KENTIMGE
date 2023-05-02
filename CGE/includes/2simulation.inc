@@ -100,6 +100,15 @@ $include cge\includes\2projection.inc
 *----------------------------------------------------------------------
 *2. Non-excel inputted scenario calibration
 *----------------------------------------------------------------------
+PARAMETER
+*Energy-price efficiency
+ ISHR(A,RD)              share of new capital in each activity
+ ICAX(C,A,RD,X,T,TT)     tracking input output coefficients
+*Energy sector investment costs
+* IADJSESIM(X,T)          total electricity investment cost growth
+GOVTAB(*,X,T,TT)              detailed reporting of government revenue
+;
+
 Parameter
  Yldshock(A,X,T)
  Worldprice(C,RW,X,T)
@@ -200,6 +209,15 @@ $offtext
  MPS01SIM(XC,INSDNG)  = 1;
  TINS01SIM(XC,INSDNG) = 1;
 
+*fh
+*Remove electricity enterprises from exogenous MPS adjustment
+ MPS01SIM(XC,'ENT')  = 0;
+ TINS01SIM(XC,'ENT') = 0;
+
+*No value-added tax adjustment on electricity sectors
+ tva01(A,RD)       = YES;
+ tva01('AELEC',RD) = NO;
+ 
 *Identify factors with upward-sloping supply curves
  FLS(F) = NO;
 LOOP(XC,

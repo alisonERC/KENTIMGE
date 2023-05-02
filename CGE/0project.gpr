@@ -8143,6 +8143,22 @@ PlaneRownr=-1
 [RP:2SIMULATION]
 1=
 
+[GDXDISP: MAXQFEQ Equ 1]
+PlaneDim=0
+RowDim=1
+Squeeze=1
+SqTrail0=0
+Order=1,2
+Decim=7
+PlaneRownr=-1
+
+[OPENWINDOW_1]
+MAXIM=0
+TOP=0
+LEFT=0
+HEIGHT=760
+WIDTH=1038
+
 [RP:1MODEL]
 1=gdx=model s=model rf=model
 2=gdx=model s=model
@@ -8151,20 +8167,12 @@ PlaneRownr=-1
 5=
 
 [MRUFILES]
-1=C:\Models\KENTIMGE\CGE\TestDyn.gms
-2=C:\Models\KENTIMGE\CGE\TestDyn.gdx
-3=C:\Models\KENTIMGE\CGE\model.gdx
-4=C:\Models\KENTIMGE\CGE\includes\2simulation_loop.inc
-5=C:\Models\KENTIMGE\CGE\includes\2simulation.inc
-6=C:\Models\KENTIMGE\CGE\includes\2projection.inc
-7=C:\Models\KENTIMGE\CGE\includes\2closures.inc
-
-[OPENWINDOW_1]
-FILE0=C:\Models\KENTIMGE\CGE\1model.gms
-FILE1=C:\Models\KENTIMGE\CGE\1model.lst
-FILE2=C:\Models\KENTIMGE\CGE\1model.lst
-MAXIM=0
-TOP=0
-LEFT=0
-HEIGHT=760
-WIDTH=1363
+1=C:\Models\KENTIMGE\CGE\1model.gms
+2=C:\Models\KENTIMGE\CGE\model.gdx
+3=C:\Models\KENTIMGE\CGE\includes\1repbase.inc
+4=C:\Models\KENTIMGE\CGE\1model.lst
+5=C:\Models\GHATIMGE\CGE\model.gdx
+6=C:\Models\KENTIMGE\CGE\TestDyn.gms
+7=C:\Models\KENTIMGE\CGE\TestDyn.gdx
+8=C:\Models\KENTIMGE\CGE\includes\2simulation_loop.inc
+9=C:\Models\KENTIMGE\CGE\includes\2simulation.inc
