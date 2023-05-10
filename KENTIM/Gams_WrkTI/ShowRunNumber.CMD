@@ -1,1 +1,1 @@
-echo Reference_Fl
+echo NDC_FlexGas

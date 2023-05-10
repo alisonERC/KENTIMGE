@@ -1,5 +1,5 @@
 SCENARIO	_GLOBAL,REGION1
-Creation Date:	2023/03/05	10:23:17 PM
+Creation Date:	2023/05/09	4:07:49 PM
 Created By:	Export from database C:\Models\KENTIMGE\KENTIM\Kenya _30TS.mdb
 ANSWER Version:	6.9.27
 Scenario:	BASE	Kenya _30TS	
@@ -420,10 +420,10 @@ TS DATA	REGION1
 	ACT_EFF	KEDSRU00	-	ACTGRP	-	ANNUAL	-	0	0.16	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
 	ACT_EFF	KEDSSC00	-	ACTGRP	-	ANNUAL	-	0	0.35	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
 	ACT_EFF	KEEL00T00	-	ACTGRP	-	ANNUAL	-	0	0.95	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
-	ACT_EFF	KEEL00TDC	-	ACTGRP	-	ANNUAL	-	0	0.9	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
-	ACT_EFF	KEEL00TDI	-	ACTGRP	-	ANNUAL	-	0	0.9	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
-	ACT_EFF	KEEL00TDR	-	ACTGRP	-	ANNUAL	-	0	0.9	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
-	ACT_EFF	KEEL00TDU	-	ACTGRP	-	ANNUAL	-	0	0.9	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	ACT_EFF	KEEL00TDC	-	ACTGRP	-	ANNUAL	-	0	0.77	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	ACT_EFF	KEEL00TDI	-	ACTGRP	-	ANNUAL	-	0	0.77	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	ACT_EFF	KEEL00TDR	-	ACTGRP	-	ANNUAL	-	0	0.77	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
+	ACT_EFF	KEEL00TDU	-	ACTGRP	-	ANNUAL	-	0	0.77	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
 	ACT_EFF	KEEL00TUC	-	ACTGRP	-	ANNUAL	-	0	1	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
 	ACT_EFF	KEEL00TUI	-	ACTGRP	-	ANNUAL	-	0	1	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
 	ACT_EFF	KEEL00TUR	-	ACTGRP	-	ANNUAL	-	0	1	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	null	
@@ -2683,13 +2683,13 @@ TID DATA	REGION1
 	PRC_CAPACT	KEHFRC10	-	-	-	-	-	31.536	
 	PRC_CAPACT	KEHFSC02	-	-	-	-	-	31.536	
 	PRC_CAPACT	KEHY00X00	-	-	-	-	-	1	
-	PRC_CAPACT	KEHY01X00	-	-	-	-	-	1	
-	PRC_CAPACT	KEHY02X00	-	-	-	-	-	1	
-	PRC_CAPACT	KEHY03X00	-	-	-	-	-	1	
+	PRC_CAPACT	KEHY01X00	-	-	-	-	-	31.536	
+	PRC_CAPACT	KEHY02X00	-	-	-	-	-	31.536	
+	PRC_CAPACT	KEHY03X00	-	-	-	-	-	31.536	
 	PRC_CAPACT	KEHYDM00	-	-	-	-	-	31.536	
-	PRC_CAPACT	KEHYDM01	-	-	-	-	-	1	
-	PRC_CAPACT	KEHYDM02	-	-	-	-	-	1	
-	PRC_CAPACT	KEHYDM03	-	-	-	-	-	1	
+	PRC_CAPACT	KEHYDM01	-	-	-	-	-	31.536	
+	PRC_CAPACT	KEHYDM02	-	-	-	-	-	31.536	
+	PRC_CAPACT	KEHYDM03	-	-	-	-	-	31.536	
 	PRC_CAPACT	KEHYDT01	-	-	-	-	-	31.536	
 	PRC_CAPACT	KEHYDT02	-	-	-	-	-	31.536	
 	PRC_CAPACT	KEHYDT03	-	-	-	-	-	31.536	

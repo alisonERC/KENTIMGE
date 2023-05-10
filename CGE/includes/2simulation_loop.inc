@@ -21,7 +21,10 @@ LOOP(XC$MRUNX(RUN,XC),
 
 $include cge\includes\2varinit.inc
 
+
 if(SIM_eMOD(RUN) eq 1,
+
+
 
 * Write Drivers to DMD_PROJ workbook
 *         execute 'gdxxrw.exe i=drivers.gdx o=.\eMOD\DataSpreadsheets\DMD_PRJ.xlsx index=index_G2E!a6';
@@ -63,7 +66,7 @@ $ontext
          if(EFVAL,
                  PUT "REGION1.CO2EQSB.2021.2050.'UP'  ", EFVAL /;
          );
-$offtext
+*!$offtext
          PUTCLOSE "/;";
 
          PUT  ShowRunNumber;
@@ -72,9 +75,13 @@ $offtext
          RUNTIMES2.ap = 0;
          PUTCLOSE "";
 
+$offtext
+
 $include KENTIM\includes\2runTIMES.inc
 );
 * if(SIM_eMOD(RUN) eq 1,
+
+
 
 $include KENTIM\includes\2TIMESReport.inc
 
@@ -123,9 +130,9 @@ ICAGR(CXEP,A,TC) = SUM(FSXEP$MFSA(FSXEP,A),ICAFSGR(CXEP,FSXEP,TC));
 *         ica('celec','aomin','NAT') = ica('celec','aomin','NAT')*0.92;
       );
 
-      if(ord(TC) > 4,
-*!         ica('cngas','aelec','NAT') = max(0.00001,EIntensity_FS('elec','cngas',TC));
-*!         ica('cpetr_d','aelec','NAT') = max(0.00001,ica('cpetr_d','aelec','NAT')*0.5);
+      if(ord(TC) > 2,
+         ica('cngas','aelec','NAT') = max(0.00001,EIntensity_FS('elec','cngas',TC));
+         ica('cpetr_d','aelec','NAT') = max(0.00001,ica('cpetr_d','aelec','NAT'));
       );
 
 
@@ -214,15 +221,19 @@ $include cge\includes\2results.inc
 $include cge\includes\2energychecks.inc
 ELCDEM(FSeMOD,TC) = EBCHECK('eGEM',FSeMOD,'IN','celec',TC,TT,RUN)*(-1);
 
-execute_unload "EnergyDemand.gdx" ELCDEM
 
 
   );
 *end of TC loop
 *$include cge\includes\2energyfcast.inc
 
+
+
  );
 * end of TT loop
+
+execute_unload "EnergyDemand.gdx" ELCDEM
+
 
 );
 * end of XC loop

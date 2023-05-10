@@ -59,7 +59,7 @@
  WALRASSQR.L            = 0 ;
  WF.L(F)                = WF0(F);
  WFDIST.L(F,A,RD)       = WFDIST0(F,A,RD);
- WFDIST2(F,A,RD)        = 0; 
+ WFDIST2(F,A,RD)        = 0;
  YF.L(F)                = YF0(f);
  YG.L                   = YG0;
  YI.L(INS)              = YI0(INS);
@@ -85,7 +85,7 @@
  iva(A,RD) = iva0(A,RD);
  ica(C,A,RD)=ica0(C,A,RD);
  ifa(F,A,RD)             = ifa0(F,A,RD);
- 
+
  tui(C,A,RD) = tui0(C,A,RD);
  tuH(C,H) = tuh0(C,H);
 
@@ -107,13 +107,13 @@
  PQ.UP('CELEC') = +inf;
 
  tq01(C)$tq0(c) = 1;
- tq01('celec')=0;		 
+ tq01('celec')=0;
  TQPS.FX = tqps0;
  TQELEC.FX(C) = TQELEC0(C);
 
  WF_BAR(F)  = WF0(F);
  QFS_BAR(F) = QFS0(F);
- 
+
 
  YG_DTAX.L               = YG_DTAX0 ;
  YG_ITAX.L               = YG_ITAX0 ;
@@ -127,7 +127,7 @@
 * TVAADJ.L                = TVAADJ0;
 * TVAPS.L                 = TVAPS0;
 * BETAM(C,H)              = betam0(C,H);
- 
+
  betaca(A,C)=1;
 
 * ETPRICE(TC) = PQ0('CELEC');
@@ -136,7 +136,7 @@
  INVCOST(RUN,TC,PRC) = 0;
  BPINV(RUN,TC,TCP,PRC) = 0;
 
- HCAP(X,TC,TT) = 0;				   
+ HCAP(X,TC,TT) = 0;
  ICAGR(C,A,TC) = 1;
  ICAFSGR(C,FS,TC) = 1;
  IFAGR(F,A,TC) = 1;
@@ -149,10 +149,10 @@
 * CMRES('CELEC') = YES;
 *  CERES('CELEC') = YES;
 
-* CERES('CPETR_d') = YES;
+ CERES('CPETR_d') = YES;
 * CMRES('CPETR_d') = YES;
 * QM.FX('CPETR_d','REST') = QM0('CPETR_d','REST');
 
-* CERES('CNGAS') = YES;
+ CERES('CNGAS') = YES;
 * CMRES('CNGAS') = YES;
 * QM.FX('CNGAS','REST') = QM0('CNGAS','REST');
