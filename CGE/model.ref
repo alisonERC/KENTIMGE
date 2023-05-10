@@ -9997,7 +9997,7 @@
 181 AFLEO 2 SET 1 0 141 activities with leontief factor demand
 182 MAC 2 SET 2 0 141 143 mapping between activities and commodities
 183 MARD 2 SET 3 43 142 141 139 mapping between SAM regions
-184 SAM 4 PARAM 2 2151 137 137 standard SAM
+184 SAM 4 PARAM 2 2162 137 137 standard SAM
 185 SAMBALCHK 4 PARAM 1 0 137 column minus row total for SAM
 186 scale 4 PARAM 0 1 scaling parameter for SAM (multiplier)
 187 natdrate 4 PARAM 0 1 national annual capital depreciation rate

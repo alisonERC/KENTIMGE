@@ -135,7 +135,7 @@ ICAGR(CXEP,A,TC) = SUM(FSXEP$MFSA(FSXEP,A),ICAFSGR(CXEP,FSXEP,TC));
          ica('cpetr_d','aelec','NAT') = max(0.00001,ica('cpetr_d','aelec','NAT'));
       );
 
-
+*!    AFX('ANGAS',RD) = YES;
 * Other Settings
 * electricity sector
     AFX('AELEC',RD) = NO;
