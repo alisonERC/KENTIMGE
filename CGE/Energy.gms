@@ -1,4 +1,4 @@
-$SETGLOBAL modeldata    "1model2019KE.xlsx"
+$SETGLOBAL modeldata    "1model.xlsx"
 
 $call "gdxxrw i=%modeldata% o=modeldatab.gdx index=index2!a5 checkdate"
 $gdxin modeldatab.gdx
@@ -27,7 +27,12 @@ ALIAS
 *-------------------------------------------------------------------------------
 *1. SAM adjustments
 *-------------------------------------------------------------------------------
+ SAM('aelec','celec')=SAM('aelec','celec')-SAM('celec','aelec');
+ SAM('celec','aelec')=0;
 
+ SAM('TOTAL',AC) = SUM(ACNT, SAM(ACNT,AC));
+ SAM(AC,'TOTAL') = SUM(ACNT, SAM(AC,ACNT));
+ SAMBALCHK(AC)   = SAM('TOTAL',AC) - SAM(AC,'TOTAL');
 
 *-------------------------------------------------------------------------------
 *2. Potential for natural gas
@@ -35,18 +40,19 @@ ALIAS
 * SAM('angas','cngas')=0.000001;
 * SAM(ACNT,'angas')=0.000001*(SAM(ACNT,'amine')/sum(ACNTP,SAM(ACNTP,'amine')));
 
- SAM('row','cngas')=0.000001;
-* SAM('cngas','aelec')=SAM('angas','cngas')+SAM('row','cngas');
- SAM('cngas','aelec')=SAM('row','cngas');
- SAM('aelec','celec')=SAM('aelec','celec')+SAM('cngas','aelec');
- SAM('celec','dstk')=SAM('cngas','aelec');
+ SAM('row','cngas')    = 0.001;
+* SAM('cngas','aelec') = SAM('angas','cngas')+SAM('row','cngas');
+ SAM('cngas','aelec')  = SAM('row','cngas');
+ SAM('aelec','celec')  = SAM('aelec','celec')+SAM('cngas','aelec');
+ SAM('celec','dstk')   = SAM('cngas','aelec');
+ SAM('dstk','s-i')     = SAM('dstk','s-i')-SAM('cngas','aelec');
+ SAM('s-i','row')      = SAM('s-i','row')-SAM('cngas','aelec');
 
 $include includes/1sambal.inc
 
  SAM('TOTAL',AC) = SUM(ACNT, SAM(ACNT,AC));
  SAM(AC,'TOTAL') = SUM(ACNT, SAM(AC,ACNT));
  SAMBALCHK(AC)   = SAM('TOTAL',AC) - SAM(AC,'TOTAL');
-
 
 *-------------------------------------------------------------------------------
 *3. Adjusting SAM to account for energy volumes

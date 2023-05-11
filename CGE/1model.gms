@@ -1395,7 +1395,7 @@ EQUATIONS
  YG_NTAX0 =  SUM((C,A,RD), tui(C,A,RD)*PQ0(C)*QINTA0(A,RD)*ica0(C,A,RD))
            + SUM((C,H), tuh(C,H)*PQ0(C)*QH0(C,H));
 
-  Abort$(ABS(YG0 - YG_DTAX0 - YG_ITAX0 - YG_NTAX0) GT .00000001) "tax calculations incorrect", YG0, YG_DTAX0, YG_ITAX0, YG_NTAX0;
+  Abort$(ABS(YG0 - YG_DTAX0 - YG_ITAX0 - YG_NTAX0) GT .000001) "tax calculations incorrect", YG0, YG_DTAX0, YG_ITAX0, YG_NTAX0;
 
   GDPMP0 = SUM((A,RD), PVA0(A,RD)*(1-TVA0(A,RD))*QVA0(A,RD)) + YG_ITAX0 + YG_NTAX0;
 

@@ -56,18 +56,21 @@ if(SIM_eMOD(RUN) eq 1,
 
                  );
          );
+
+
+        PUTCLOSE "/;";
 $ontext
 
+*Write Cumulative CO2 CAP bound
          PUT "/;"/;
 
-*Write Cumulative CO2 CAP bound
          PUT 'PARAMETER ACOMCUMNET /' /;
          EFVAL = SIM_CO2CUMUL(RUN)*1000000;
          if(EFVAL,
                  PUT "REGION1.CO2EQSB.2021.2050.'UP'  ", EFVAL /;
          );
 *!$offtext
-         PUTCLOSE "/;";
+
 
          PUT  ShowRunNumber;
          RUNTIMES2.pc = 2;
@@ -132,7 +135,7 @@ ICAGR(CXEP,A,TC) = SUM(FSXEP$MFSA(FSXEP,A),ICAFSGR(CXEP,FSXEP,TC));
 
       if(ord(TC) > 2,
          ica('cngas','aelec','NAT') = max(0.00001,EIntensity_FS('elec','cngas',TC));
-         ica('cpetr_d','aelec','NAT') = max(0.00001,ica('cpetr_d','aelec','NAT'));
+         ica('cpetr_d','aelec','NAT') = max(0.00001,EIntensity_FS('elec','cpetr_d',TC));
       );
 
 *!    AFX('ANGAS',RD) = YES;

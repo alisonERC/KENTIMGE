@@ -130,8 +130,8 @@
 130 179 ACES2 SETS defined 89 7 114 1 2 C:\Models\KENTIMGE\CGE\1model.dat
 131 180 ACET2 SETS defined 89 7 120 1 2 C:\Models\KENTIMGE\CGE\1model.dat
 132 181 AFLEO SETS defined 89 7 126 1 2 C:\Models\KENTIMGE\CGE\1model.dat
-133 186 scale PARAMETERS declared 96 14 7 1 2 C:\Models\KENTIMGE\CGE\1model.dat
-134 186 scale PARAMETERS defined 96 14 68 1 2 C:\Models\KENTIMGE\CGE\1model.dat
+133 186 scale PARAMETERS declared 97 15 7 1 2 C:\Models\KENTIMGE\CGE\1model.dat
+134 186 scale PARAMETERS defined 97 15 68 1 2 C:\Models\KENTIMGE\CGE\1model.dat
 135 187 natdrate PARAMETERS declared 98 16 10 1 2 C:\Models\KENTIMGE\CGE\1model.dat
 136 187 natdrate PARAMETERS defined 98 16 68 1 2 C:\Models\KENTIMGE\CGE\1model.dat
 137 188 accrate PARAMETERS declared 99 17 9 1 2 C:\Models\KENTIMGE\CGE\1model.dat
@@ -6105,10 +6105,10 @@
 6105 493 YG_DTAX0 PARAMETERS ref 1945 1398 28 0 1 C:\Models\KENTIMGE\CGE\1model.gms
 6106 494 YG_ITAX0 PARAMETERS ref 1945 1398 39 0 1 C:\Models\KENTIMGE\CGE\1model.gms
 6107 495 YG_NTAX0 PARAMETERS ref 1945 1398 50 0 1 C:\Models\KENTIMGE\CGE\1model.gms
-6108 456 YG0 PARAMETERS ref 1945 1398 99 0 1 C:\Models\KENTIMGE\CGE\1model.gms
-6109 493 YG_DTAX0 PARAMETERS ref 1945 1398 109 0 1 C:\Models\KENTIMGE\CGE\1model.gms
-6110 494 YG_ITAX0 PARAMETERS ref 1945 1398 119 0 1 C:\Models\KENTIMGE\CGE\1model.gms
-6111 495 YG_NTAX0 PARAMETERS ref 1945 1398 129 0 1 C:\Models\KENTIMGE\CGE\1model.gms
+6108 456 YG0 PARAMETERS ref 1945 1398 97 0 1 C:\Models\KENTIMGE\CGE\1model.gms
+6109 493 YG_DTAX0 PARAMETERS ref 1945 1398 107 0 1 C:\Models\KENTIMGE\CGE\1model.gms
+6110 494 YG_ITAX0 PARAMETERS ref 1945 1398 117 0 1 C:\Models\KENTIMGE\CGE\1model.gms
+6111 495 YG_NTAX0 PARAMETERS ref 1945 1398 127 0 1 C:\Models\KENTIMGE\CGE\1model.gms
 6112 498 GDPMP0 PARAMETERS assigned 1947 1400 15 0 1 C:\Models\KENTIMGE\CGE\1model.gms
 6113 141 A SETS control 1947 1400 19 0 1 C:\Models\KENTIMGE\CGE\1model.gms
 6114 139 RD SETS control 1947 1400 22 0 1 C:\Models\KENTIMGE\CGE\1model.gms
@@ -9997,7 +9997,7 @@
 181 AFLEO 2 SET 1 0 141 activities with leontief factor demand
 182 MAC 2 SET 2 0 141 143 mapping between activities and commodities
 183 MARD 2 SET 3 43 142 141 139 mapping between SAM regions
-184 SAM 4 PARAM 2 2162 137 137 standard SAM
+184 SAM 4 PARAM 2 2151 137 137 standard SAM
 185 SAMBALCHK 4 PARAM 1 0 137 column minus row total for SAM
 186 scale 4 PARAM 0 1 scaling parameter for SAM (multiplier)
 187 natdrate 4 PARAM 0 1 national annual capital depreciation rate
@@ -10078,7 +10078,7 @@
 262 TRSHR 4 PARAM 1 0 143 
 263 hpop0 4 PARAM 1 0 165 household populations
 264 QPROD 4 PARAM 2 13 137 139 agriculture crop production volumes (million tonnes)
-265 CALIB 4 PARAM 2 5 137 0 production and emissions calibration data
+265 CALIB 4 PARAM 2 7 137 0 production and emissions calibration data
 266 SIREC 2 SET 1 0 137 set for elements permitted to receive payment from S-I
 267 NEGCELL 2 SET 2 0 137 137 the SAM payment from ACP (column) to AC (row) is negative
 268 LARGECELL 2 SET 2 0 137 137 cells with absolute values larger than cellcutoffup

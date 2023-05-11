@@ -217,7 +217,7 @@ $offtext
 *No value-added tax adjustment on electricity sectors
  tva01(A,RD)       = YES;
  tva01('AELEC',RD) = NO;
- 
+
 *Identify factors with upward-sloping supply curves
  FLS(F) = NO;
 LOOP(XC,

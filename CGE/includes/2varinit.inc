@@ -153,6 +153,6 @@
 * CMRES('CPETR_d') = YES;
 * QM.FX('CPETR_d','REST') = QM0('CPETR_d','REST');
 
- CERES('CNGAS') = YES;
+* CERES('CNGAS') = YES;
 * CMRES('CNGAS') = YES;
 * QM.FX('CNGAS','REST') = QM0('CNGAS','REST');
