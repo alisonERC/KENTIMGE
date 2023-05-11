@@ -503,19 +503,18 @@ PlaneRownr=-1
 1=gdx=energy
 
 [MRUFILES]
-1=C:\W\SAGE_GH_Ag+En+OEn\Energy.lst
-2=C:\W\SAGE_GH_Ag+En+OEn\Energy.gms
-3=C:\W\SAGE_GH_Ag+En+OEn\energy.gdx
-4=C:\W\SAGE_GH_Ag+En\Energy.gms
-5=C:\W\SAGE_GH_Ag+En\includes\1sambal.inc
-6=C:\W\SAGE_GH_woenergylinks\Energy.gms
-7=C:\W\SAGE_GH_woenergylinks\energy.gdx
-8=C:\W\SAGE_GH_woenergylinks\1model.dat
+1=C:\W\SAGE_KE_FINAL\Energy.gms
+2=C:\W\SAGE_GH_Ag+En+OEn\Energy.lst
+3=C:\W\SAGE_GH_Ag+En+OEn\Energy.gms
+4=C:\W\SAGE_GH_Ag+En+OEn\energy.gdx
+5=C:\W\SAGE_GH_Ag+En\Energy.gms
+6=C:\W\SAGE_GH_Ag+En\includes\1sambal.inc
+7=C:\W\SAGE_GH_woenergylinks\Energy.gms
 
 [OPENWINDOW_1]
-FILE0=C:\W\SAGE_KE_FINAL\Energy.gms
-FILE1=C:\W\SAGE_KE_FINAL\Energy.lst
-FILE2=C:\W\SAGE_KE_FINAL\Energy.lst
+FILE0=C:\Models\KENTIMGE\CGE\energy.gdx
+FILE1=C:\Models\KENTIMGE\CGE\Energy.gms
+FILE2=C:\Models\KENTIMGE\CGE\Energy.gms
 MAXIM=0
 TOP=0
 LEFT=0

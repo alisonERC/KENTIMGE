@@ -33,7 +33,7 @@ PlaneDim=0
 RowDim=1
 Squeeze=1
 Order=1,2
-Decim=2
+Decim=6
 PlaneRownr=-1
 SqTrail0=0
 
@@ -8155,6 +8155,33 @@ PlaneRownr=-1
 [RP:2SIMULATION_LOOP]
 1=
 
+[GDXDISP: YG_DTAX0 Par 0]
+PlaneDim=0
+RowDim=0
+Squeeze=1
+SqTrail0=0
+Order=
+Decim=7
+PlaneRownr=-1
+
+[GDXDISP: YG_ITAX0 Par 0]
+PlaneDim=0
+RowDim=0
+Squeeze=1
+SqTrail0=0
+Order=
+Decim=7
+PlaneRownr=-1
+
+[GDXDISP: YG_NTAX0 Par 0]
+PlaneDim=0
+RowDim=0
+Squeeze=1
+SqTrail0=0
+Order=
+Decim=6
+PlaneRownr=-1
+
 [RP:1MODEL]
 1=gdx=model s=model rf=model
 2=gdx=model s=model
@@ -8163,7 +8190,7 @@ PlaneRownr=-1
 5=
 
 [MRUFILES]
-1=C:\Models\KENTIMGE\CGE\includes\1repbase.inc
+1=C:\Models\KENTIMGE\CGE\1model.lst
 2=C:\Models\GHATIMGE\CGE\model.gdx
 3=C:\Models\KENTIMGE\CGE\TestDyn.gms
 4=C:\Models\KENTIMGE\CGE\TestDyn.gdx
@@ -8171,10 +8198,12 @@ PlaneRownr=-1
 6=C:\Models\KENTIMGE\CGE\includes\2simulation.inc
 
 [OPENWINDOW_1]
-FILE0=C:\Models\KENTIMGE\CGE\1model.gms
-FILE1=C:\Models\KENTIMGE\CGE\1model.lst
-FILE2=C:\Models\KENTIMGE\CGE\model.gdx
-FILE3=C:\Models\KENTIMGE\CGE\model.gdx
+FILE0=C:\Models\KENTIMGE\CGE\1model.dat
+FILE1=C:\Models\KENTIMGE\CGE\1model.gms
+FILE2=C:\Models\KENTIMGE\CGE\includes\1diagnostics.inc
+FILE3=C:\Models\KENTIMGE\CGE\includes\1repbase.inc
+FILE4=C:\Models\KENTIMGE\CGE\model.gdx
+FILE5=C:\Models\KENTIMGE\CGE\1model.gms
 MAXIM=0
 TOP=0
 LEFT=0

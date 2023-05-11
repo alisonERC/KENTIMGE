@@ -185,7 +185,7 @@ LOOP((PRC,TC)$(TVNCAP(TC,PRC) AND NCAP_ILED('REGION1','2015',PRC) LT 0),
 
 *Sum across vintages to get total annual cost (billions of USD) Kenyan shillings for the CGE
 * EINVCOST(XC,T,TT) = SUM((SUPELE AND SUPOIL), INVCOST(XC,T,TT,ELE));
- EINVCOST(RUN,TC) = SUM(PRCPower, INVCOST(RUN,TC,PRCPower))*0.1;
+ EINVCOST(RUN,TC) = SUM(PRCPower, INVCOST(RUN,TC,PRCPower))*100;
 
 * fixing end effect until we run past 2050
  EINVCOST(RUN,'2050') = EINVCOST(RUN,'2049');
