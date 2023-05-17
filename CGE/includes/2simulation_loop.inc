@@ -31,7 +31,14 @@ if(SIM_eMOD(RUN) eq 1,
 * Read resulting Demand from DMD_PROJ workbook
 *         execute 'gdxxrw.exe i=.\eMOD\DataSpreadsheets\DMD_PRJ.xlsx o=EnergyDemand.gdx index=index_E2G!a6';
 *         execute_load "EnergyDemand.gdx" SIM_DEMX;
-          execute_load "EnergyDemand.gdx" ELCDEM;
+
+if(ord(TT) eq 1,
+         execute_load "EnergyDemandStart.gdx" ELCDEM;
+
+else
+         execute_load "EnergyDemand.gdx" ELCDEM;
+
+);
           SIM_DEMX(DEM1,TC) = SUM(FSeMOD$MELCDEM(FSeMOD,DEM1),ELCDEM(FSeMOD,TC));
 
 * Adjust Transport Demand
@@ -230,12 +237,12 @@ ELCDEM(FSeMOD,TC) = EBCHECK('eGEM',FSeMOD,'IN','celec',TC,TT,RUN)*(-1);
 *end of TC loop
 *$include cge\includes\2energyfcast.inc
 
-
+execute_unload "EnergyDemand.gdx" ELCDEM
 
  );
 * end of TT loop
 
-execute_unload "EnergyDemand.gdx" ELCDEM
+
 
 
 );
